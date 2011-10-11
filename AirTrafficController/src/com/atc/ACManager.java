@@ -15,10 +15,10 @@ import java.util.PriorityQueue;
  * @author Rakesh Kumar
  *
  */
-public class ACManager {
+public class AcManager {
 
-	private static ACManager 	mACManager;
-	private PriorityQueue<AC> 	mAcPQ;  		/*Air-craft priority queue*/
+	private static AcManager 	mACManager;
+	private PriorityQueue<Ac> 	mAcPQ;  		/*Air-craft priority queue*/
 	private ObjectOutputStream 	mOOS;			/*For serializing the AC priority queue*/
 	private ObjectInputStream	mOIS;			/*For object restoration*/
 
@@ -26,14 +26,14 @@ public class ACManager {
 	 * private constructor so that only this class can make object of its own. Basically to follow 
 	 * singleton design.
 	 */
-	private ACManager(){
+	private AcManager(){
 
 		try {
 			restoreQueue();
 		} catch (Exception e) {
 			System.err.println("Some Problem happend during restoration of Aircraft Queue");
 			System.out.println("If you are running first time then ignore this message");
-			mAcPQ = new PriorityQueue<AC>(AcConst.INITIAL_PRIORITY_QUEUE_SIZE);
+			mAcPQ = new PriorityQueue<Ac>(AcConst.INITIAL_PRIORITY_QUEUE_SIZE);
 		}		
 	}
 
@@ -44,10 +44,10 @@ public class ACManager {
 	 * surety that the compiler optimization will not affect this design.
 	 * @return ACManager singleton object
 	 */
-	synchronized static public ACManager getInstance(){
+	synchronized static public AcManager getInstance(){
 
 		if(null==mACManager){
-			mACManager = new ACManager();
+			mACManager = new AcManager();
 		}
 		return mACManager;
 	}
@@ -56,16 +56,16 @@ public class ACManager {
 	 * This method takes Air-craft as an object to put in the priority-queue.
 	 * @param airCraft
 	 */
-	public void takeoffRequest(AC airCraft){
+	public void enqueueAC(Ac airCraft){
 		mAcPQ.add(airCraft);
 	}
 	/**
 	 * This method returns the Air-craft object which has highest priority.
 	 * @return
 	 */
-	public AC acGoingtoTakeOff(){
+	public Ac dequeueAC(){
 
-		AC ac=null;
+		Ac ac=null;
 
 		if(!mAcPQ.isEmpty()){
 			ac=mAcPQ.remove();
@@ -103,7 +103,7 @@ public class ACManager {
 		/*this method uses lazi initialization of member variable*/
 
 		mOIS = new ObjectInputStream(new FileInputStream(AcConst.SERIALIZED_FILE));
-		mAcPQ = (PriorityQueue<AC>)mOIS.readObject();
+		mAcPQ = (PriorityQueue<Ac>)mOIS.readObject();
 	}
 
 	/**

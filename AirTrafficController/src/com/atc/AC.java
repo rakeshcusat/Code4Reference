@@ -2,7 +2,7 @@ package com.atc;
 
 import java.io.Serializable;
 
-public class AC implements Serializable,Comparable<AC>{
+public class Ac implements Serializable,Comparable<Ac>{
 
 
 	/**
@@ -15,9 +15,9 @@ public class AC implements Serializable,Comparable<AC>{
 	private AcSize 	acSize;	/*Air-craft Size it could be Big or small*/
 	private Integer priority;  /*priority of the Aircraft*/
 
-	public AC(){};  /*default construct for the Serializable interface*/
+	public Ac(){};  /*default construct for the Serializable interface*/
 
-	public AC(String acName,AcType acType,AcSize acSize){
+	public Ac(String acName,AcType acType,AcSize acSize){
 		this.acName = acName;
 		this.acType = acType;
 		this.acSize = acSize;
@@ -97,7 +97,7 @@ public class AC implements Serializable,Comparable<AC>{
 	 * provides the comparison of different object.
 	 */
 	@Override
-	public int compareTo(AC ac) {
+	public int compareTo(Ac ac) {
 
 		return this.getPriority()-ac.getPriority();
 	}
