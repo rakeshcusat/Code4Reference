@@ -3,12 +3,11 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
-
 import com.atc.Ac;
 import com.atc.AcManager;
-import com.atc.AcUtility;
 import com.atc.AcSize;
 import com.atc.AcType;
+import com.atc.AcUtility;
 
 /**
  * 
@@ -120,7 +119,6 @@ public class AirTrafficControlerConsole {
 					//Setting the isBootupComplete flag
 					isBootupComplete = true;
 
-
 					System.out.println("Bootup complete..."+AcUtility.newLine());
 					break;
 
@@ -155,8 +153,8 @@ public class AirTrafficControlerConsole {
 	 * @param args
 	 */
 	public static void main(String[] args) {
-		AirTrafficControlerConsole atcConsole = new AirTrafficControlerConsole();
-		atcConsole.Execute();
+		new AirTrafficControlerConsole().Execute();
+		
 	}
 
 

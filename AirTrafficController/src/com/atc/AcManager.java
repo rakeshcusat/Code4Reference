@@ -17,10 +17,10 @@ import java.util.PriorityQueue;
  */
 public class AcManager {
 
-	private static AcManager 	mACManager;
-	private PriorityQueue<Ac> 	mAcPQ;  		/*Air-craft priority queue*/
-	private ObjectOutputStream 	mOOS;			/*For serializing the AC priority queue*/
-	private ObjectInputStream	mOIS;			/*For object restoration*/
+	private static AcManager 			mACManager;
+	private static PriorityQueue<Ac> 	mAcPQ;  		/*Air-craft priority queue*/
+	private static ObjectOutputStream 	mOOS;			/*For serializing the AC priority queue*/
+	private static ObjectInputStream	mOIS;			/*For object restoration*/
 
 	/**
 	 * private constructor so that only this class can make object of its own. Basically to follow 
@@ -44,7 +44,7 @@ public class AcManager {
 	 * surety that the compiler optimization will not affect this design.
 	 * @return ACManager singleton object
 	 */
-	synchronized static public AcManager getInstance(){
+	 public static synchronized AcManager getInstance(){
 
 		if(null==mACManager){
 			mACManager = new AcManager();
@@ -86,7 +86,7 @@ public class AcManager {
 	 */
 	public void saveQueue() throws FileNotFoundException, IOException{
 		/*
-		 * This method uses lazi initialization of member variable 
+		 * This method uses lazy initialization of member variable 
 		 */
 		mOOS = new ObjectOutputStream(new FileOutputStream(AcConst.SERIALIZED_FILE));
 		mOOS.writeObject(mAcPQ);
@@ -97,10 +97,9 @@ public class AcManager {
 	 * @throws IOException	Throws IOException if there is some problem in IO.
 	 * @throws ClassNotFoundException	Throws ClassNotFoundException if there is change in the class version.
 	 */
-	@SuppressWarnings("unchecked")
-
+	
 	public void restoreQueue() throws FileNotFoundException, IOException, ClassNotFoundException{
-		/*this method uses lazi initialization of member variable*/
+		/*this method uses lazy initialization of member variable*/
 
 		mOIS = new ObjectInputStream(new FileInputStream(AcConst.SERIALIZED_FILE));
 		mAcPQ = (PriorityQueue<Ac>)mOIS.readObject();
