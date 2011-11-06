@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+		xmlns:android="http://schemas.android.com/apk/res/android"
+         android:orientation="vertical"
+         android:layout_width="fill_parent" 
+         android:layout_height="wrap_content"
+         android:paddingBottom="5dip">
+    <RelativeLayout 
+    	android:layout_width="fill_parent"
+	    android:layout_height="wrap_content">
+	    <TextView
+        android:id="@+id/label"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="Type the Name of Group:"/>
+	    <EditText
+	        android:id="@+id/entry"
+	        android:layout_width="fill_parent"
+	        android:layout_height="wrap_content"
+	        android:background="@android:drawable/editbox_background"
+	        android:layout_below="@id/label"/>
+	    <Button
+	        android:id="@+id/ok"
+	        android:layout_height="wrap_content"
+	        android:layout_width="65dip"
+	        android:layout_below="@id/entry"
+	        android:layout_alignParentRight="true"
+	        android:layout_marginLeft="10dip"
+	        android:onClick="sendMessage"
+	        android:text="Create" />
+	    <Button
+			android:layout_width="65dip"
+	        android:layout_height="wrap_content"
+	        android:onClick="resetIt"
+	        android:layout_toLeftOf="@id/ok"
+	        android:layout_alignTop="@id/ok"
+	        android:text="Reset" />
+	</RelativeLayout> 
+</LinearLayout>

@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+		xmlns:android="http://schemas.android.com/apk/res/android"
+         android:orientation="vertical"
+         android:layout_width="fill_parent" 
+         android:layout_height="wrap_content"
+         android:scrollbars="vertical"
+         android:paddingBottom="5dip">
+      <RelativeLayout 
+    	android:layout_width="fill_parent"
+	    android:layout_height="wrap_content">
+	    
+	    <Button
+	        android:id="@+id/ok"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_alignParentRight="true"
+	        android:layout_marginLeft="10dip"
+	        android:onClick="registerGroup"
+	        android:text="Register" />
+	    <Button
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_toLeftOf="@id/ok"
+	        android:layout_alignTop="@id/ok"
+	        android:onClick="refreshData"
+	        android:text="Refresh" />
+	    <ExpandableListView android:id="@+id/android:list"
+               android:layout_width="fill_parent" 
+               android:paddingBottom="0dip"
+               android:layout_below="@id/ok"
+               android:layout_height="wrap_content"
+               android:scrollbars="vertical"
+               />
+               
+	    
+	</RelativeLayout> --> 
+	
+<!--  	<ExpandableListView android:id="@+id/android:list"
+               android:layout_width="fill_parent" 
+               android:paddingBottom="50dip"
+               android:layout_height="wrap_content"
+               android:scrollbars="vertical"
+               />
+               
+      <TextView android:id="@+id/android:empty"
+               android:layout_width="fill_parent" 
+               android:layout_height="wrap_content"
+               android:text="@string/main_no_items"/>
+               
+        <Button
+	        android:id="@+id/ok"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_marginLeft="10dip"
+	        android:text="OK" /> -->
+</LinearLayout>
+

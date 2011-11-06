@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="hello">Hello World, LetMeKnow!</string>
+    <string name="app_name">LetMeKnow</string>
+    <string name="all_groups">AllGroups</string>
+    <string name="my_groups">MyGroups</string>
+    <string name="create_group">CreateGroup</string>
+    <string name="main_no_items">No items</string>
+    <string name="checkbox_text">Selected</string>
+</resources>

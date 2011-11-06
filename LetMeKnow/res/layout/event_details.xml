@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+         android:orientation="vertical"
+         android:layout_width="fill_parent" 
+         android:layout_height="wrap_content"
+         android:paddingBottom="5dip">
+<LinearLayout android:orientation="vertical"
+         android:layout_width="fill_parent" 
+         android:layout_height="wrap_content">
+
+	
+	<TextView android:id="@+id/subject"
+	    android:layout_width="fill_parent"
+	    android:layout_height="fill_parent"
+	    android:padding="10dp"
+	    android:textSize="16sp" /> 
+	    
+ 	<TextView android:id="@+id/eventdetails"
+	    android:layout_width="fill_parent"
+	    android:layout_height="fill_parent"
+	    android:padding="10dp"
+	    android:textSize="16sp" /> 
+	
+		<TextView android:id="@+id/SenderName"
+	    android:layout_width="fill_parent"
+	    android:layout_height="fill_parent"
+	    android:padding="10dp"
+	    android:textSize="16sp"
+	    android:text="Sender:" />
+	    
+	    <TextView android:id="@+id/email"
+	    android:layout_width="fill_parent"
+	    android:layout_height="fill_parent"
+	    android:padding="10dp"
+	    android:textSize="16sp"/>
+	    
+	    <TextView android:id="@+id/date"
+	    android:layout_width="fill_parent"
+	    android:layout_height="fill_parent"
+	    android:padding="10dp"
+	    android:textSize="16sp"/>
+	    
+	    <TextView android:id="@+id/time"
+	    android:layout_width="fill_parent"
+	    android:layout_height="fill_parent"
+	    android:padding="10dp"
+	    android:textSize="16sp"/>
+	    
+	    <TextView android:id="@+id/expired"
+	    android:layout_width="fill_parent"
+	    android:layout_height="fill_parent"
+	    android:padding="10dp"
+	    android:textSize="16sp"
+	    android:textColor="#ff0000"/>
+	    
+	    <TextView android:id="@+id/outofreach"
+	    android:layout_width="fill_parent"
+	    android:layout_height="fill_parent"
+	    android:padding="10dp"
+	    android:textSize="16sp"
+	    android:textColor="#ff0000"/>
+	    
+	    <ImageButton
+			android:layout_width="65dip"
+	        android:layout_height="wrap_content"
+	        android:background="@drawable/trash_icon"
+	        android:onClick="onDelete"
+	        android:text="Delete" />
+</LinearLayout>
+</ScrollView>
