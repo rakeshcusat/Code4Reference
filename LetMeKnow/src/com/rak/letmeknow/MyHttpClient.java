@@ -34,8 +34,6 @@ public class MyHttpClient extends AsyncTask<String, Integer, String> {
 		
 		dialog = new ProgressDialog((Context)ctx);
 		dialog.setMessage("Loading ....");
-
-		
 		dialog.setIndeterminate(true);
 		dialog.setCancelable(false);
 		dialog.show();
