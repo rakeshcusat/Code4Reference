@@ -4,3 +4,6 @@ C/zigzagarray.c
 
 clockwise inward spiral array Print
 CPP/clockwiseiterator.cpp
+
+combination of characters
+CPP/char_combination.cpp
