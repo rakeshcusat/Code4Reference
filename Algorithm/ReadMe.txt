@@ -7,3 +7,6 @@ CPP/clockwiseiterator.cpp
 
 combination of characters
 CPP/char_combination.cpp
+
+Reverse stack.
+CPP/reverse_stack.cpp
