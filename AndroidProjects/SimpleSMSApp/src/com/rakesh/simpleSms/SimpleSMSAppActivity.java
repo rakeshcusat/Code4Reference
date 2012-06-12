@@ -34,7 +34,7 @@ public class SimpleSMSAppActivity extends Activity {
     	String message = etMessage.getText().toString();
     	Log.d("RK","number : "+number+", message : " + message  );
     	
-    	if(isNullOrEmpty(number) && isNullOrEmpty(message)){
+    	if(!isNullOrEmpty(number) && !isNullOrEmpty(message)){
     		if(message.length() > MAX_MESSAGE_SIZE){
     			
     			Toast.makeText(this,"Message is longer then allowed in SMS",Toast.LENGTH_LONG).show();
