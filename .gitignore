@@ -7,7 +7,6 @@
 *.o
 *.so
 *.ser
-*.apk
 *.dex
 *.ap_
 tempclasses
