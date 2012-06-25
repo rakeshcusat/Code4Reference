@@ -17,16 +17,18 @@ import android.widget.Toast;
 
 public class SimpleWidgetExampleActivity extends Activity {
 	private Button btNetworkSetting;
-	/** Called when the activity is first created. */
+	
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.main);
 		btNetworkSetting = (Button)findViewById(R.id.btNetworkSetting);
 		if(checkConnectivityState(getApplicationContext())){
-			btNetworkSetting.setBackgroundColor(Color.GREEN);
+			btNetworkSetting.setTextColor(Color.GREEN);
+			btNetworkSetting.setText(R.string.strBtNetworkSettingDisable);
 		}else{
-			btNetworkSetting.setBackgroundColor(Color.GRAY);
+			btNetworkSetting.setTextColor(Color.BLACK);
+			btNetworkSetting.setText(R.string.strBtNetworkSettingEnable);
 		}
 	}
 
@@ -40,7 +42,6 @@ public class SimpleWidgetExampleActivity extends Activity {
 		boolean enabled = !checkConnectivityState(context);
 		final ConnectivityManager conman = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
 
-
 		try{
 			final Class conmanClass = Class.forName(conman.getClass().getName());
 			final Field iConnectivityManagerField = conmanClass.getDeclaredField("mService");
@@ -53,15 +54,15 @@ public class SimpleWidgetExampleActivity extends Activity {
 			setMobileDataEnabledMethod.invoke(iConnectivityManager, enabled);
 
 			if(enabled){
-				//Toast.makeText(view.getContext(), "Enabled Network Data", Toast.LENGTH_SHORT).show();
-				view.setBackgroundColor(Color.GREEN);
+				((Button)view).setTextColor(Color.GREEN);
+				((Button)view).setText(R.string.strBtNetworkSettingDisable);
 			}
 			else{
-				//Toast.makeText(view.getContext(), "Disabled Network Data", Toast.LENGTH_SHORT).show();
-				view.setBackgroundColor(Color.LTGRAY);
+				((Button)view).setTextColor(Color.GREEN);
+				((Button)view).setText(R.string.strBtNetworkSettingEnable);
 			}
 		}catch(Exception e){
-			Log.e("Error", "some error");
+			Log.e("Error", "some error"+e.getMessage());
 			Toast.makeText(view.getContext(), "It didn't work", Toast.LENGTH_LONG).show();
 		}
 	}
@@ -69,7 +70,6 @@ public class SimpleWidgetExampleActivity extends Activity {
 	private boolean checkConnectivityState(Context context){
 		final TelephonyManager telephonyManager = (TelephonyManager) context
 				.getSystemService(Context.TELEPHONY_SERVICE);
-		ConnectivityManager af ;
 		return telephonyManager.getDataState() == TelephonyManager.DATA_CONNECTED;
 
 	}

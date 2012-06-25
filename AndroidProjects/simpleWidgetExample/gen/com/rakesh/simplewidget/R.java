@@ -12,23 +12,28 @@ public final class R {
     }
     public static final class drawable {
         public static final int background=0x7f020000;
-        public static final int ic_launcher=0x7f020001;
+        public static final int button_shape=0x7f020001;
+        public static final int ic_launcher=0x7f020002;
     }
     public static final class id {
         public static final int BtEnableDisable=0x7f060001;
         public static final int Corners=0x7f060002;
         public static final int btNetworkSetting=0x7f060000;
+        public static final int shapeBt=0x7f060003;
     }
     public static final class layout {
         public static final int main=0x7f030000;
         public static final int widget1=0x7f030001;
     }
     public static final class string {
-        public static final int app_name=0x7f050001;
-        public static final int hello=0x7f050000;
+        public static final int app_name=0x7f050000;
+        public static final int strBtNetworkSettingDisable=0x7f050002;
         /**  String constants for Buttons 
          */
-        public static final int strBtNetworkSetting=0x7f050002;
+        public static final int strBtNetworkSettingEnable=0x7f050001;
+        public static final int strWidgetBtDisable=0x7f050004;
+        public static final int strWidgetBtEnable=0x7f050003;
+        public static final int strWidgetBtEnableDisable=0x7f050005;
     }
     public static final class xml {
         public static final int widget1_info=0x7f040000;

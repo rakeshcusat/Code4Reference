@@ -7,9 +7,6 @@
     <uses-sdk android:minSdkVersion="10" />
     <!-- Permissions -->
     <uses-permission android:name="android.permission.CHANGE_NETWORK_STATE" />
-    <!-- 
-    <uses-permission android:name="android.permission.MODIFY_PHONE_STATE" />
-     -->
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
     <application
@@ -27,21 +24,23 @@
         <!-- Widget Broadcast receiver -->
         <receiver
             android:name=".ExampleAppWidgetProvider"
-            android:label="Widget ErrorBuster" >
+            android:label="@string/app_name" >
             <intent-filter>
                 <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
             </intent-filter>
-			
+
             <meta-data
                 android:name="android.appwidget.provider"
                 android:resource="@xml/widget1_info" />
         </receiver>
-        <service android:name=".UpdateWidgetService"></service>
+
+        <service android:name=".UpdateWidgetService" />
         <!-- Connectivity broadcast receiver -->
         <receiver android:name=".ConnectivityReceiver" >
             <intent-filter>
                 <action android:name="android.net.conn.CONNECTIVITY_CHANGE" />
             </intent-filter>
-        </receiver> 
+        </receiver>
     </application>
+
 </manifest>

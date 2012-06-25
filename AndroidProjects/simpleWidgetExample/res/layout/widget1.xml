@@ -6,5 +6,6 @@
   android:gravity="center"
   android:layout_margin="4dp"
   android:background="@drawable/background">
-   <Button android:text="Enable/Disable" android:id="@+id/BtEnableDisable" android:layout_width="wrap_content" android:layout_height="wrap_content"/>
+   <Button android:text="@string/strWidgetBtEnableDisable" android:id="@+id/BtEnableDisable" android:layout_width="100dp" android:layout_height="wrap_content"
+       android:background="@drawable/button_shape"/>
 </LinearLayout>

@@ -1,8 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="hello">Hello World, SimpleWidgetExampleActivity!</string>
-    <string name="app_name">SimpleWidgetExample</string>
+    <string name="app_name">Data-packet widget</string>
     <!-- String constants for Buttons -->
-    <string name="strBtNetworkSetting">Network Settings</string>
+    <string name="strBtNetworkSettingEnable">Enable Data-Packet</string>
+    <string name="strBtNetworkSettingDisable">Disable Data-Packet</string>
+    <string name="strWidgetBtEnable">Enable</string>
+    <string name="strWidgetBtDisable">Disable</string>
+    <string name="strWidgetBtEnableDisable">Enable/Disable</string>
 </resources>
