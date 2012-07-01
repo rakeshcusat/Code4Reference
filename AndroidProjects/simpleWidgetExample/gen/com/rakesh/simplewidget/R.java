@@ -37,6 +37,6 @@ public final class R {
         public static final int strWidgetBtEnableDisable=0x7f050005;
     }
     public static final class xml {
-        public static final int widget1_info=0x7f040000;
+        public static final int widget_info=0x7f040000;
     }
 }

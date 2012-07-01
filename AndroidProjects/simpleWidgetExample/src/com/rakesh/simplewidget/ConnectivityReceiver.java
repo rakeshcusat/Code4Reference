@@ -35,7 +35,7 @@ public class ConnectivityReceiver extends BroadcastReceiver {
 				remoteViews.setTextViewText(R.id.BtEnableDisable,"Disabled");
 			}
 			
-			ComponentName thiswidget = new ComponentName(context, ExampleAppWidgetProvider.class);
+			ComponentName thiswidget = new ComponentName(context, SimpleWidgetAppWidgetProvider.class);
 			AppWidgetManager manager = AppWidgetManager.getInstance(context);
 			manager.updateAppWidget(thiswidget, remoteViews);
 			

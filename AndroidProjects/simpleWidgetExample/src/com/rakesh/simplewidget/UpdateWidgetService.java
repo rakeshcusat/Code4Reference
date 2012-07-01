@@ -25,7 +25,7 @@ public class UpdateWidgetService extends Service {
 		int[] allWidgetIds = intent.getIntArrayExtra(AppWidgetManager.EXTRA_APPWIDGET_IDS);
 
 		ComponentName thisWidget = new ComponentName(getApplicationContext(),
-				ExampleAppWidgetProvider.class);
+				SimpleWidgetAppWidgetProvider.class);
 
 		for (int widgetId : allWidgetIds) {
 			RemoteViews remoteViews = new RemoteViews(this
@@ -37,7 +37,7 @@ public class UpdateWidgetService extends Service {
 
 			// Register an onClickListener
 			Intent clickIntent = new Intent(this.getApplicationContext(),
-					ExampleAppWidgetProvider.class);
+					SimpleWidgetAppWidgetProvider.class);
 
 			clickIntent.setAction(AppWidgetManager.ACTION_APPWIDGET_UPDATE);
 			clickIntent.putExtra(AppWidgetManager.EXTRA_APPWIDGET_IDS,

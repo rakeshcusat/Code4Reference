@@ -12,13 +12,13 @@ import android.util.Log;
 import android.widget.RemoteViews;
 import android.widget.Toast;
 
-public class ExampleAppWidgetProvider extends AppWidgetProvider {
+public class SimpleWidgetAppWidgetProvider extends AppWidgetProvider {
 
 	public void onUpdate(Context context, AppWidgetManager appWidgetManager, int[] appWidgetIds) {
 
 		final int N = appWidgetIds.length;
 		ComponentName thisWidget = new ComponentName(context,
-				ExampleAppWidgetProvider.class);
+				SimpleWidgetAppWidgetProvider.class);
 		int[] allWidgetIds = appWidgetManager.getAppWidgetIds(thisWidget);
 
 		// Build the intent to call the service
