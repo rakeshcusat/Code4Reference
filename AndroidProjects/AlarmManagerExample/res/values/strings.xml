@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">AlarmManagerExample</string>
+    <string name="menu_settings">Settings</string>
+    <string name="title_activity_alarm_manager">AlarmManagerExample</string>
+	<string name="btCancel">Cancel Repeating Timer</string>
+	<string name="btStart">Start Repeating Timer</string>
+	<string name="btOneTime">One-time Timer</string>
+</resources>
