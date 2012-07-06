@@ -4,13 +4,7 @@ import android.appwidget.AppWidgetProvider;
 import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
-import android.graphics.Color;
-import android.net.ConnectivityManager;
-import android.net.NetworkInfo;
-import android.telephony.TelephonyManager;
-import android.util.Log;
-import android.widget.RemoteViews;
-import android.widget.Toast;
+
 
 public class SimpleWidgetAppWidgetProvider extends AppWidgetProvider {
 

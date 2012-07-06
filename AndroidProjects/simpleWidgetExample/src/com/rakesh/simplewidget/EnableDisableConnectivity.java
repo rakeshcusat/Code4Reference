@@ -7,7 +7,6 @@ import android.content.Context;
 import android.net.ConnectivityManager;
 import android.telephony.TelephonyManager;
 import android.util.Log;
-import android.view.View;
 
 public class EnableDisableConnectivity {
 	private Context mContext;

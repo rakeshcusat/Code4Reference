@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">WidgetAlamarManagerExample</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="menu_settings">Settings</string>
+    <string name="title_activity_widget_alarm_manager">WidgetAlarmManagerExample</string>
+	<string name="btCancel">Cancel alarm</string>
+	<string name="btStart">Start alarm</string>
+</resources>

@@ -24,7 +24,7 @@ public final class R {
     }
     public static final class layout {
         public static final int main=0x7f030000;
-        public static final int widget1=0x7f030001;
+        public static final int widget_layout=0x7f030001;
     }
     public static final class string {
         public static final int app_name=0x7f050000;
@@ -37,6 +37,6 @@ public final class R {
         public static final int strWidgetBtEnableDisable=0x7f050005;
     }
     public static final class xml {
-        public static final int widget_info=0x7f040000;
+        public static final int widget_metadata=0x7f040000;
     }
 }

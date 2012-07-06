@@ -21,7 +21,7 @@ public class ConnectivityReceiver extends BroadcastReceiver {
 		if(info.getType() == ConnectivityManager.TYPE_MOBILE){
 			
 			RemoteViews remoteViews = new RemoteViews(context.getPackageName(),
-					R.layout.widget1);
+					R.layout.widget_layout);
 			
 			if(info.isConnectedOrConnecting()){
 				Toast.makeText(context, "Data packet enabled", Toast.LENGTH_SHORT).show();

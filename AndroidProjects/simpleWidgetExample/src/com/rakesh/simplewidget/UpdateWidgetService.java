@@ -1,6 +1,5 @@
 package com.rakesh.simplewidget;
 
-import java.util.Random;
 
 import android.app.PendingIntent;
 import android.app.Service;
@@ -8,10 +7,8 @@ import android.appwidget.AppWidgetManager;
 import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
-import android.net.ConnectivityManager;
 import android.os.IBinder;
 import android.telephony.TelephonyManager;
-import android.util.Log;
 import android.widget.RemoteViews;
 
 public class UpdateWidgetService extends Service {
@@ -30,7 +27,7 @@ public class UpdateWidgetService extends Service {
 		for (int widgetId : allWidgetIds) {
 			RemoteViews remoteViews = new RemoteViews(this
 					.getApplicationContext().getPackageName(),
-					R.layout.widget1);
+					R.layout.widget_layout);
 
 			EnableDisableConnectivity edConn = new EnableDisableConnectivity(this.getApplicationContext());
 			edConn.enableDisableDataPacketConnection(!checkConnectivityState(this.getApplicationContext()));
