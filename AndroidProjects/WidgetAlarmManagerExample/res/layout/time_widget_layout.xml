@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@drawable/widget_background" >
+
+     <TextView
+         android:id="@+id/tvTime"
+         style="@android:style/TextAppearance.Medium"
+         android:layout_width="match_parent"
+         android:layout_height="match_parent"
+         android:layout_gravity="center"
+         android:layout_margin="4dip"
+         android:gravity="center_horizontal|center_vertical"
+         android:textColor="#000000" />
+
+</LinearLayout>
