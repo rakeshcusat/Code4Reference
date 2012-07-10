@@ -52,7 +52,6 @@ public class TimeWidgetProvider extends AppWidgetProvider {
 					R.layout.time_widget_layout);
 			// Set the text with the current time.
 			remoteViews.setTextViewText(R.id.tvTime, Utility.getCurrentTime("hh:mm:ss a"));
-
 			appWidgetManager.updateAppWidget(widgetId, remoteViews);
 		}
 	}
@@ -61,9 +60,8 @@ public class TimeWidgetProvider extends AppWidgetProvider {
 	public void onAppWidgetOptionsChanged(Context context,
 			AppWidgetManager appWidgetManager, int appWidgetId,
 			Bundle newOptions) {
+		//Do some operation here, once you see that the widget has change its size or position.
 		Toast.makeText(context, "onAppWidgetOptionsChanged() called", Toast.LENGTH_SHORT).show();
-		super.onAppWidgetOptionsChanged(context, appWidgetManager, appWidgetId,
-				newOptions);
 	}
 
 }

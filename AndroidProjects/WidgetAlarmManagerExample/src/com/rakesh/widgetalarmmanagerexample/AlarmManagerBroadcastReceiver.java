@@ -13,7 +13,6 @@ import android.widget.Toast;
 
 public class AlarmManagerBroadcastReceiver extends BroadcastReceiver {
 
-	final public static String ONE_TIME = "onetime";
 	@Override
 	public void onReceive(Context context, Intent intent) {
 		PowerManager pm = (PowerManager) context.getSystemService(Context.POWER_SERVICE);
@@ -37,7 +36,6 @@ public class AlarmManagerBroadcastReceiver extends BroadcastReceiver {
 	public void setOnetimeTimer(Context context){
 		AlarmManager am=(AlarmManager)context.getSystemService(Context.ALARM_SERVICE);
 		Intent intent = new Intent(context, AlarmManagerBroadcastReceiver.class);
-		intent.putExtra(ONE_TIME, Boolean.TRUE);
 		PendingIntent pi = PendingIntent.getBroadcast(context, 0, intent, 0);
 		am.set(AlarmManager.RTC_WAKEUP, System.currentTimeMillis(), pi);
 	}
