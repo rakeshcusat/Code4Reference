@@ -26,7 +26,7 @@ public class GCMExampleServlet extends HttpServlet {
 	
 	log.info("appId :" +appId+", emailId : "+emailId + ", phoneNo : "+phoneNo+", userId : "+userId);
 	
-	DatastoreServiceFactory.getDatastoreService().put(EntityFactory.createUserInfoEntity(appId, emailId, phoneNo, userId));
+	DatastoreFactory.registerUser(appId, emailId,  userId);
 	resp.setContentType("text/plain");
 	resp.getWriter().println("saved the user data");
 	}
