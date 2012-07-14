@@ -23,10 +23,10 @@ import com.google.appengine.api.datastore.Query.FilterPredicate;
  */
 public class DatastoreFactory {
 	
-	 private static final String USER_INFO =  "UserInfo";
-	 private static final String DEVICE_REG_ID_PROPERTY = "regId";
-	 private static final String MULTICAST_TYPE = "Multicast";
-	 private static final String MULTICAST_REG_IDS_PROPERTY = "regIds";
+	 public static final String USER_INFO =  "UserInfo";
+	 public static final String DEVICE_REG_ID_PROPERTY = "regId";
+	 public static final String MULTICAST_TYPE = "Multicast";
+	 public static final String MULTICAST_REG_IDS_PROPERTY = "regIds";
 
 	 
 	 private static final Logger log =
