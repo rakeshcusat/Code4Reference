@@ -5,7 +5,9 @@
     android:orientation="vertical">
     <Button 
         android:id="@+id/btNotification"
-        android:text="Notification"
-        android:onClick="sendNotification"/>
+        android:text="@string/btBigTextNotification"
+        android:onClick="sendNotification"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
 
 </LinearLayout>
