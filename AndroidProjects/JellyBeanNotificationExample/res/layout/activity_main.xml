@@ -2,12 +2,45 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
-    <Button 
-        android:id="@+id/btNotification"
-        android:text="@string/btBigTextNotification"
-        android:onClick="sendNotification"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
+    android:orientation="vertical"
+    android:gravity="center_horizontal">
 
+    <Button
+        android:id="@+id/btBasicNotification"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal|center_vertical"
+        android:onClick="sendBasicNotification"
+        android:text="@string/btBasicNotification" 
+        android:background="@drawable/button_background"
+        android:textColor="#000000"
+        />
+    <Button
+        android:id="@+id/btBigTextNotification"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal|center_vertical"
+        android:onClick="sendBigTextNotification"
+        android:text="@string/btBigTextNotification" 
+        android:background="@drawable/button_background"
+        android:textColor="#000000"
+        />
+   <Button
+        android:id="@+id/btBigPictureNotification"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal|center_vertical"
+        android:onClick="sendBigPictureNotification"
+        android:text="@string/btBigPictureNotification"
+        android:background="@drawable/button_background"
+        android:textColor="#000000" />
+   <Button
+        android:id="@+id/btInboxStyleNotification"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal|center_vertical"
+        android:onClick="sendInboxStyleNotification"
+        android:text="@string/btInboxStyleNotification"
+        android:background="@drawable/button_background"
+        android:textColor="#000000"/>
 </LinearLayout>

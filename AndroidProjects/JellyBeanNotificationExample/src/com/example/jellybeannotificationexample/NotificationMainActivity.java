@@ -1,6 +1,5 @@
 package com.example.jellybeannotificationexample;
 
-import android.R;
 import android.os.Bundle;
 import android.app.Activity;
 import android.app.Notification;
@@ -29,14 +28,16 @@ public class NotificationMainActivity extends Activity {
         getMenuInflater().inflate(R.menu.activity_main, menu);
         return true;
     }
-
-    public void sendNotification(View view){
-    	Context context = getApplicationContext();
-    	Toast.makeText(context, "Just a test", Toast.LENGTH_SHORT).show();
-    	createNotificationforBigText();
+    public void sendBasicNotification(View view){
+       Notification notification = new Notification.Builder(this)
+    							.setContentTitle("Basic Notification")
+    							.setContentText("Basic Notification, used earlier")
+    							.setSmallIcon(R.drawable.ic_launcher_share).build();
+       notification.flags |= Notification.FLAG_AUTO_CANCEL;
+       NotificationManager notificationManager = getNotificationManager();
+       notificationManager.notify(0, notification);
     }
-    
-   public void createNotificationforBigText(){
+    public void sendBigTextNotification(View view){
 	   String msgText = "Jeally Bean Notification example!! "+
 	               "where you will see three different kind of notification. " +
 	               "you can even put the very long string here.";
@@ -44,44 +45,57 @@ public class NotificationMainActivity extends Activity {
 	   NotificationManager notificationManager = getNotificationManager();
 	   PendingIntent pi = getPendingIntent();
 	   Builder builder = new Notification.Builder(this);
-	   builder.setContentTitle("JB Notofication")
-	   .setContentText("Jelly Bean Notification")
-	   .setSmallIcon(R.drawable.ic_launcher)
-	   .addAction(R.drawable.ic_action_search, "show activity", pi);
-	  Notification noti = new Notification.BigTextStyle(builder).bigText(msgText).build();
-	  noti.flags |= Notification.FLAG_AUTO_CANCEL; //Put the auto cancel notification.
-	  //noti.contentIntent = pi;  //Associate the intent here.
-	  notificationManager.notify(0, noti);
+	   builder.setContentTitle("Big text Notofication")
+	   .setContentText("Big text Notification")
+	   .setSmallIcon(R.drawable.ic_launcher);
+	   //.addAction(R.drawable.ic_launcher_web, "show activity", pi);
+	  Notification notification = new Notification.BigTextStyle(builder).bigText(msgText).build();
+	  notification.flags |= Notification.FLAG_AUTO_CANCEL; //Put the auto cancel notification.
+	  notification.contentIntent = pi;  //Associate the intent here.
+	  notificationManager.notify(0, notification);
    }
    
-   public void createBigpictureNotification(){
+   public void sendBigPictureNotification(View view){
 	   PendingIntent pi = getPendingIntent();
 	   Builder builder = new Notification.Builder(this);
 	   builder.setContentTitle("BP notification") //Notification title
 	   .setContentText("BigPicutre notification") //you can put subject line.
 	   .setSmallIcon(R.drawable.ic_launcher) //Set your notification icon here.
-	   .addAction(R.drawable.ic_action_search, "show activity", pi);
+	   .addAction(R.drawable.ic_launcher_web, "show activity", pi)
+	   .addAction(R.drawable.ic_launcher_share,
+				  "Share",
+				  PendingIntent.getActivity(getApplicationContext(), 0,
+				  getIntent(), 0, null));
 	   
 	   //Now create the Big picture notification.
 	   Notification notification = new Notification.BigPictureStyle(builder)
-	   .bigPicture(BitmapFactory.decodeResource(getResources(), R.drawable.android_jelly_bean)).build();
+	   .bigPicture(BitmapFactory.decodeResource(getResources(), R.drawable.big_picture)).build();
+	   notification.flags |= Notification.FLAG_AUTO_CANCEL; //Put the auto cancel notification.
 	   NotificationManager notificationManager = getNotificationManager();
 	   notificationManager.notify(0, notification);
    }
-   public void createInboxStyleNotification(){
-	   Builder builder =  new Notification.Builder()
+   public void sendInboxStyleNotification(View view){
+	   PendingIntent pi = getPendingIntent();
+	   Builder builder =  new Notification.Builder(this)
        .setContentTitle("IS Notification")
        .setContentText("Inbox Style notification!!")
-       .setSmallIcon(R.drawable.ic_launcher);
-	   Notification noti = new Notification.InboxStyle(builder)
-			      .addLine("IS notification 1st message")
-			      .addLine("IS notification 2st message")
-			      .setContentTitle("")
+       .setSmallIcon(R.drawable.ic_launcher)
+       .addAction(R.drawable.ic_launcher_web, "show activity", pi);
+	   
+	   Notification notification = new Notification.InboxStyle(builder)
+			      .addLine("First message")
+			      .addLine("Second message")
+			      .addLine("Thrid message")
+			      .addLine("Fourth Message")
 			      .setSummaryText("+2 more")
 			      .build();
+	   
+	   notification.flags |= Notification.FLAG_AUTO_CANCEL; //Put the auto cancel notification.
+	   NotificationManager notificationManager = getNotificationManager();
+	   notificationManager.notify(0, notification);
    }
    public PendingIntent getPendingIntent(){
-	   return PendingIntent.getActivity(this, 0, new Intent(this, NotificationMainActivity.class), 0);
+	   return PendingIntent.getActivity(this, 0, new Intent(this, HandleNotificationActivity.class), 0);
    }
    public NotificationManager getNotificationManager(){
 	   return (NotificationManager)getSystemService(NOTIFICATION_SERVICE); 
