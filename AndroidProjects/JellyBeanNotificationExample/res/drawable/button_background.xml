@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="rectangle" 
+    android:id="@+id/bgButton">
+     <gradient android:startColor="#FFFFFFFF" android:endColor="#FFF0F0F0" android:angle="45"/>
+     <stroke android:width="2dp" android:color="#FFAAAAAA"/>
+     <padding android:left="4dp" android:top="1dp" android:right="4dp" android:bottom="1dp" />
+     <corners android:radius="7dp" />
+</shape>
