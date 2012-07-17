@@ -5,8 +5,8 @@
     <string name="menu_settings">Settings</string>
     <string name="title_activity_main">JB Notification</string>
     <string name="btBasicNotification">Send Basic Notification</string>
-    <string name="btBigTextNotification">Send Big Text Notification</string>
-    <string name="btBigPictureNotification">Send Big Picture Notification</string>
+    <string name="btBigTextNotification">Send Big Text Style Notification</string>
+    <string name="btBigPictureNotification">Send Big Picture Style Notification</string>
     <string name="btInboxStyleNotification">Send Inbox Style Notification</string>
     <string name="tvHandleNotification">You can handle notification intent here.</string>
 </resources>

@@ -20,7 +20,7 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:gravity="center_horizontal|center_vertical"
-        android:onClick="sendBigTextNotification"
+        android:onClick="sendBigTextStyleNotification"
         android:text="@string/btBigTextNotification" 
         android:background="@drawable/button_background"
         android:textColor="#000000"
@@ -30,7 +30,7 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:gravity="center_horizontal|center_vertical"
-        android:onClick="sendBigPictureNotification"
+        android:onClick="sendBigPictureStyleNotification"
         android:text="@string/btBigPictureNotification"
         android:background="@drawable/button_background"
         android:textColor="#000000" />
