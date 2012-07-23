@@ -46,11 +46,11 @@ public class NotificationMainActivity extends Activity {
 		builder.setContentTitle("Big text Notofication")
 				.setContentText("Big text Notification")
 				.setSmallIcon(R.drawable.ic_launcher)
-				.addAction(R.drawable.ic_launcher_web, "show activity", pi);
+				.addAction(R.drawable.ic_launcher_web, "show activity", pi)
+				.setAutoCancel(true);
 		Notification notification = new Notification.BigTextStyle(builder)
-				.bigText(msgText).build();
-		// Put the auto cancel notification flag
-		notification.flags |= Notification.FLAG_AUTO_CANCEL;
+				.bigText(msgText)
+				.build();
 		notificationManager.notify(0, notification);
 	}
 

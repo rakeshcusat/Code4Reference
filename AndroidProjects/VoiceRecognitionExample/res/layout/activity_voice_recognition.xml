@@ -1,0 +1,34 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <EditText
+        android:id="@+id/etTextHint"
+        android:gravity="top"
+        android:inputType="textMultiLine"
+        android:lines="3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="speak"
+        android:padding="@dimen/padding_medium"
+        android:text="@string/btSpeak"
+        tools:context=".VoiceRecognitionActivity" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/tvTextMatches"
+        android:textStyle="bold" />
+
+    <ListView
+        android:id="@+id/lvTextMatches"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+</LinearLayout>

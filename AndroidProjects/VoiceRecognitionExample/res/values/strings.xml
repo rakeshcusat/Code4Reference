@@ -1,0 +1,8 @@
+<resources>
+
+    <string name="app_name">VoiceRecognitionExample</string>
+    <string name="btSpeak">Speak</string>
+    <string name="menu_settings">Settings</string>
+    <string name="title_activity_voice_recognition">Voice Recognition</string>
+    <string name="tvTextMatches">Text Matches</string>
+</resources>

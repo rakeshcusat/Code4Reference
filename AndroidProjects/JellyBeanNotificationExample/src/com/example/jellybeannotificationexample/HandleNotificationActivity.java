@@ -10,5 +10,4 @@ public class HandleNotificationActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.handle_notification_activity);
 	}
-
 }
