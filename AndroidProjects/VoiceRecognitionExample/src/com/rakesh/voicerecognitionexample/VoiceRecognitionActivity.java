@@ -38,7 +38,7 @@ public class VoiceRecognitionActivity extends Activity {
 	}
 
 	public void checkVoiceRecognition() {
-		// Check to see if a recognition activity is present
+		// Check if voice recognition is present
 		PackageManager pm = getPackageManager();
 		List<ResolveInfo> activities = pm.queryIntentActivities(new Intent(
 				RecognizerIntent.ACTION_RECOGNIZE_SPEECH), 0);
@@ -51,7 +51,6 @@ public class VoiceRecognitionActivity extends Activity {
 
 	public void speak(View view) {
 		Intent intent = new Intent(RecognizerIntent.ACTION_RECOGNIZE_SPEECH);
-
 		// Specify the calling package to identify your application
 		intent.putExtra(RecognizerIntent.EXTRA_CALLING_PACKAGE, getClass()
 				.getPackage().getName());

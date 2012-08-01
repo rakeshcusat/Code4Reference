@@ -6,7 +6,7 @@
     <string name="title_activity_voice_recognition">Voice Recognition</string>
     <string name="tvTextMatches">Text Matches</string>
     <string name="sNoOfMatches">No of Matches</string>
-    <string name="etSearchHint">Speech recognition hint here</string>
+    <string name="etSearchHint">Speech hint here</string>
     <string-array name="saNoOfMatches">
         <item>1</item>
         <item>2</item>
