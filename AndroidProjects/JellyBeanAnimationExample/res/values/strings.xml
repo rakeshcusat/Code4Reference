@@ -1,11 +1,12 @@
 <resources>
 
-    <string name="app_name">JellyBeanAnimationExample</string>
+    <string name="app_name">JB Animation</string>
     <string name="hello_world">Hello world!</string>
     <string name="menu_settings">Settings</string>
-    <string name="title_activity_main">MainActivity</string>
+    <string name="title_activity_main">JB Animation</string>
     <string name="animation_activity">This is Animation Activity</string>
     <string name="btScaleupAni">Scaleup Animation</string>
     <string name="btThumbNailScaleupAni">ThumbNail scaleup Animation</string>
-    
+    <string name="btZoomAnimation">Zoom Animation</string>
+    <string name="btFadeAnimation">Fade Animation</string>
 </resources>
