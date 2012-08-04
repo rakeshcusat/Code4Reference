@@ -2,6 +2,9 @@ package com.example.jellybeananimationexample;
 
 import android.app.Activity;
 import android.app.ActivityOptions;
+import android.app.AlertDialog;
+import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.os.Bundle;
@@ -16,7 +19,7 @@ public class MainActivity extends Activity {
 	}
 
 	public void scaleupAnimation(View view){
-		 // Create a scale-up animation that originates at the button
+		// Create a scale-up animation that originates at the button
         // being pressed.
         ActivityOptions opts = ActivityOptions.makeScaleUpAnimation(
                 view, 0, 0, view.getWidth(), view.getHeight());
@@ -29,7 +32,6 @@ public class MainActivity extends Activity {
         view.setPressed(false);
         view.refreshDrawableState();
         Bitmap bitmap = view.getDrawingCache();
-       // Canvas canvas = new Canvas(bitmap);
         ActivityOptions opts = ActivityOptions.makeThumbnailScaleUpAnimation(
                 view, bitmap, 0, 0);
         // Request the activity be started, using the custom animation options.
@@ -46,8 +48,9 @@ public class MainActivity extends Activity {
 	
 	public void fadeAnimation(View view){
 		 ActivityOptions opts = ActivityOptions.makeCustomAnimation(MainActivity.this,
-                 R.anim.fade, R.anim.hold);
+                 R.anim.fade_in, R.anim.fade_out);
          // Request the activity be started, using the custom animation options.
          startActivity(new Intent(MainActivity.this, ExampleAnimationActivity.class), opts.toBundle());
 	}
+	
 }

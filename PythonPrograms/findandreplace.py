@@ -27,7 +27,6 @@ def main():
     
     replace(sys.argv[1],"<br />",'\n')
     
-
 if __name__=="__main__":
     """If the this file  run as program then execute the main method"""
     main()    
