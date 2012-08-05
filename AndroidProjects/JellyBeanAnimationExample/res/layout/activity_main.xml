@@ -7,11 +7,6 @@
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:onClick="zoomAnimation"
-        android:text="@string/btZoomAnimation" />
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
         android:onClick="fadeAnimation"
         android:text="@string/btFadeAnimation" />
     <Button

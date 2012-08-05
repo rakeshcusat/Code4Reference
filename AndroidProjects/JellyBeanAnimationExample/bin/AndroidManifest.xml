@@ -20,7 +20,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".ExampleAnimationActivity"
+            android:name=".AnimationActivity"
             android:label="@string/title_activity_main" >
             <intent-filter>
                 <category android:name="android.intent.category.LAUNCHER" />

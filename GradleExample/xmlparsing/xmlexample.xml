@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+<project name="xmlGradleProject" version = "1.0">
+    <modulelist name="ModulesNameList" shortName = "mnl">
+        <module name="firstModule" version = "1.1"/>
+        <module name="SecondModule" version = "2.1" />
+    </modulelist>
+    <description> This is simple xml parser in gradle </description>
+</project>
