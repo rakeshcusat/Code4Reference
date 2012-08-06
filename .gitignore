@@ -10,7 +10,9 @@
 *.dex
 *.ap_
 tempclasses
-
+# temp file#
+###########
+*~
 # OS generated files #
 ######################
 .DS_Store?
