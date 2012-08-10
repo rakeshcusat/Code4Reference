@@ -1,7 +1,7 @@
-task readXml() {
+task parseXml() {
     def parsedProjectXml = (new XmlParser()).parse('xmlexample.xml')
-    println parsedProjectXml.@name
-    println parsedProjectXml.@version
+    println "project Name : " + parsedProjectXml.@name + 
+            ", version : " +  parsedProjectXml.@version
     println "ModuleList name : " + parsedProjectXml.modulelist[0].@name +
             ", shortName : " + parsedProjectXml.modulelist[0].@shortName
     parsedProjectXml.modulelist.module.each{ module ->
