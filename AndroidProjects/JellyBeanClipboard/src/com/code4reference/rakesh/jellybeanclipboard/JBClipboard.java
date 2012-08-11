@@ -34,18 +34,31 @@ public class JBClipboard extends Activity {
 		etCopy.setText(Html.fromHtml(getString(R.string.tvHtml)));
 		rbText = (RadioButton) findViewById(R.id.rbText);
 		rbHtml = (RadioButton) findViewById(R.id.rbHtml);
-		
+
 		mClipboard = (ClipboardManager) getSystemService(this.CLIPBOARD_SERVICE);
 
+		// Get the intent that started this activity
+		Intent intent = getIntent();
+		if (intent != null && intent.getType() != null
+				&& intent.getType().equals("text/html")) {
+			Bundle bundle = intent.getExtras();
+			if (rbHtml.isChecked()) {
+				etPaste.setText(bundle.getCharSequence(Intent.EXTRA_HTML_TEXT));
+			} else {
+				etPaste.setText(bundle.getCharSequence(Intent.EXTRA_TEXT));
+			}
+
+		}
 	}
 
 	public void copyHtml(View view) {
 		String htmlText = getHtmltxt(etCopy);
 		String plainText = getOnlyText(etCopy);
-		
+
 		mClipboard.setPrimaryClip(ClipData.newHtmlText("HTML Text", plainText,
 				htmlText));
-		Utility.showToastMessage(getApplicationContext(),"Copied html text", Toast.LENGTH_SHORT);
+		Utility.showToastMessage(getApplicationContext(), "Copied html text",
+				Toast.LENGTH_SHORT);
 	}
 
 	public void pasteHtml(View view) {
@@ -57,49 +70,58 @@ public class JBClipboard extends Activity {
 						ClipDescription.MIMETYPE_TEXT_HTML)) {
 			// Get the very first item from the clip.
 			ClipData.Item item = mClipboard.getPrimaryClip().getItemAt(0);
-		
-			//If "Paste HTML" radio button is selected then paste 
-			//HTML in the Textview.
-			if(rbHtml.isChecked()){
+
+			// If "Paste HTML" radio button is selected then paste
+			// HTML in the Textview.
+			if (rbHtml.isChecked()) {
 				etPaste.setText(item.getHtmlText());
-				Utility.showToastMessage(getApplicationContext(),"HTML text pasted", Toast.LENGTH_SHORT);
-			}else{
-				//Paste the only text version.
+				Utility.showToastMessage(getApplicationContext(),
+						"HTML text pasted", Toast.LENGTH_SHORT);
+			} else {
+				// Paste the only text version.
 				etPaste.setText(item.getText());
-				Utility.showToastMessage(getApplicationContext(),"Text pasted", Toast.LENGTH_SHORT);
+				Utility.showToastMessage(getApplicationContext(),
+						"Text pasted", Toast.LENGTH_SHORT);
 			}
-			//Paste the CoerceText .
+			// Paste the CoerceText .
 			etPasteCoerceText.setText(item.coerceToText(this));
 		}
 	}
-	public void sendIntent(View view){
+
+	public void sendIntent(View view) {
 		Intent intent = new Intent(Intent.ACTION_SEND);
-		//intent.setAction();
+		// intent.setAction();
 		String htmlText = getHtmltxt(etCopy);
 		String text = getOnlyText(etCopy);
 		intent.putExtra(Intent.EXTRA_HTML_TEXT, htmlText);
 		intent.putExtra(Intent.EXTRA_TEXT, text);
-		getApplicationContext().sendBroadcast(intent);
-		Utility.showToastMessage(getApplicationContext(), "Intent sent", Toast.LENGTH_SHORT);
+		intent.setType("text/html");
+		startActivity(Intent.createChooser(intent, null));
+		Utility.showToastMessage(getApplicationContext(), "Intent sent",
+				Toast.LENGTH_SHORT);
 	}
+
 	/**
-	 * This method get the EditText object and returns the 
-	 * HTML text. This method can only be run with those EditText
-	 * which has spannable set and contains the HTML text.
+	 * This method get the EditText object and returns the HTML text. This
+	 * method can only be run with those EditText which has spannable set and
+	 * contains the HTML text.
+	 * 
 	 * @param editText
 	 * @return
 	 */
-	private String getHtmltxt(EditText editText){
+	private String getHtmltxt(EditText editText) {
 		Spannable spannable = (Spannable) editText.getText();
 		return Html.toHtml(spannable);
 	}
+
 	/**
 	 * This method takes the EditText obje which has spannable object with HTML
 	 * text and returns the only text.
+	 * 
 	 * @param editText
 	 * @return
 	 */
-	private String getOnlyText(EditText editText){
+	private String getOnlyText(EditText editText) {
 		return editText.getText().toString();
 	}
 }
