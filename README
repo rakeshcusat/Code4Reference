@@ -1,6 +1,14 @@
-This repo has miscellaneous reference codes. These code have been written in free-time for learning purpose.
+This repo has miscellaneous reference codes. These code have been written in free-time for learning purpose. 
+www.code4reference.com posts the various tutorials and How tos stuff, The corresponding tutorial source code example 
+are maintained here. Any one can use the example source code even you can copy this repo for your reference.
+If you want to contribute to this git repo they are most welcome. you can even write article blog and share with 
+www.code4reference.com
+
+Repo details
+-------------------------------------------------------------------
 This project contains 4 Folders
 1. Algorithm : contains algorithm related solution.
 2. AndroidProjects : contains Android projects
 3. JavaPrograms : Contains java programs, some mini projects, and javadesign related project.
 4. PythonPrograsm : Contains Python script. I write these script when I fiddle with python modules/packages.  
+5. GradleExample : Contains the gradle script, 
