@@ -36,15 +36,22 @@ public final class R {
     }
     public static final class string {
         public static final int app_name=0x7f050000;
+        /**  Text string for button 
+         */
         public static final int btCopy=0x7f050004;
         public static final int btPaste=0x7f050005;
+        public static final int btSendIntent=0x7f050006;
         public static final int menu_settings=0x7f050001;
-        public static final int rbHtml=0x7f050006;
-        public static final int rbText=0x7f050007;
+        /**  Text string for RadioButton 
+         */
+        public static final int rbHtml=0x7f050007;
+        public static final int rbText=0x7f050008;
         public static final int title_activity_jbclipboard=0x7f050002;
-        public static final int tvCopiedText=0x7f050008;
+        /**  Text string for Text View 
+         */
+        public static final int tvCopiedText=0x7f050009;
         public static final int tvHtml=0x7f050003;
-        public static final int tvcoerceText=0x7f050009;
+        public static final int tvcoerceText=0x7f05000a;
     }
     public static final class style {
         public static final int AppTheme=0x7f060000;

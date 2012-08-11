@@ -50,6 +50,15 @@
        android:onClick="pasteHtml"
        android:text="@string/btPaste"/>
    </LinearLayout>
+   <LinearLayout android:layout_width="fill_parent"
+       android:layout_height="wrap_content"
+       android:orientation="horizontal">
+       <Button
+           android:layout_width="fill_parent"
+           android:layout_height="wrap_content"
+           android:onClick="sendIntent"
+           android:text="@string/btSendIntent"/>
+   </LinearLayout>
    <TextView
        android:layout_width="fill_parent"
        android:layout_height="wrap_content"

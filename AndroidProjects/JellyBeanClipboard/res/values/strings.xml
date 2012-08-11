@@ -4,10 +4,15 @@
     <string name="menu_settings">Settings</string>
     <string name="title_activity_jbclipboard">JBClipboard</string>
    <string name="tvHtml"><![CDATA[<b>Link:</b> <a href="http://www.android.com">Android</a>]]></string>
+   <!-- Text string for button -->
    <string name="btCopy">Copy</string>
    <string name="btPaste">Paste</string>
+   <string name="btSendIntent">Send Intent with Intent</string>
+   <!-- Text string for RadioButton -->
    <string name="rbHtml">Paste Html</string>
    <string name="rbText">Paste Text</string>
+   <!-- Text string for Text View -->
    <string name="tvCopiedText">Copied text</string>
    <string name="tvcoerceText">Copied coerce Text</string>
+   
 </resources>

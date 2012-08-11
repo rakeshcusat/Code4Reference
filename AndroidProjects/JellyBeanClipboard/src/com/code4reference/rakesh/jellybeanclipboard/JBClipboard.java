@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.ClipData;
 import android.content.ClipDescription;
 import android.content.ClipboardManager;
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.Html;
 import android.text.Spannable;
@@ -39,13 +40,12 @@ public class JBClipboard extends Activity {
 	}
 
 	public void copyHtml(View view) {
-		Spannable spannable = (Spannable) etCopy.getText();
-		String htmlText = Html.toHtml(spannable);
-		String plainText = etCopy.getText().toString();
+		String htmlText = getHtmltxt(etCopy);
+		String plainText = getOnlyText(etCopy);
 		
 		mClipboard.setPrimaryClip(ClipData.newHtmlText("HTML Text", plainText,
 				htmlText));
-		showToast("Copied html text", Toast.LENGTH_SHORT);
+		Utility.showToastMessage(getApplicationContext(),"Copied html text", Toast.LENGTH_SHORT);
 	}
 
 	public void pasteHtml(View view) {
@@ -62,19 +62,44 @@ public class JBClipboard extends Activity {
 			//HTML in the Textview.
 			if(rbHtml.isChecked()){
 				etPaste.setText(item.getHtmlText());
-				showToast("HTML text pasted", Toast.LENGTH_SHORT);
+				Utility.showToastMessage(getApplicationContext(),"HTML text pasted", Toast.LENGTH_SHORT);
 			}else{
 				//Paste the only text version.
 				etPaste.setText(item.getText());
-				showToast("Text pasted", Toast.LENGTH_SHORT);
+				Utility.showToastMessage(getApplicationContext(),"Text pasted", Toast.LENGTH_SHORT);
 			}
 			//Paste the CoerceText .
 			etPasteCoerceText.setText(item.coerceToText(this));
 		}
 	}
-
-	public void showToast(String message, int duration) {
-		Toast.makeText(this, message, duration).show();
+	public void sendIntent(View view){
+		Intent intent = new Intent(Intent.ACTION_SEND);
+		//intent.setAction();
+		String htmlText = getHtmltxt(etCopy);
+		String text = getOnlyText(etCopy);
+		intent.putExtra(Intent.EXTRA_HTML_TEXT, htmlText);
+		intent.putExtra(Intent.EXTRA_TEXT, text);
+		getApplicationContext().sendBroadcast(intent);
+		Utility.showToastMessage(getApplicationContext(), "Intent sent", Toast.LENGTH_SHORT);
 	}
-	
+	/**
+	 * This method get the EditText object and returns the 
+	 * HTML text. This method can only be run with those EditText
+	 * which has spannable set and contains the HTML text.
+	 * @param editText
+	 * @return
+	 */
+	private String getHtmltxt(EditText editText){
+		Spannable spannable = (Spannable) editText.getText();
+		return Html.toHtml(spannable);
+	}
+	/**
+	 * This method takes the EditText obje which has spannable object with HTML
+	 * text and returns the only text.
+	 * @param editText
+	 * @return
+	 */
+	private String getOnlyText(EditText editText){
+		return editText.getText().toString();
+	}
 }
