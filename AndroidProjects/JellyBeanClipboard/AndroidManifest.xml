@@ -25,6 +25,12 @@
                 <data android:mimeType="text/html" />
             </intent-filter>
         </activity>
+        <activity android:name="com.code4reference.rakesh.jellybeanclipboard.ClipdataIntentActivity"
+            android:label="@string/title_activity_jbclipboard" >
+            <intent-filter>
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
     </application>
 
 </manifest>

@@ -41,13 +41,15 @@ public class JBClipboard extends Activity {
 		Intent intent = getIntent();
 		if (intent != null && intent.getType() != null
 				&& intent.getType().equals("text/html")) {
+			//This contition will full-fill when this application receive the 
+			//intent who's type is "test/html". In this application sendHtmlIntent
+			//method sends this type of Intent. 
 			Bundle bundle = intent.getExtras();
 			if (rbHtml.isChecked()) {
 				etPaste.setText(bundle.getCharSequence(Intent.EXTRA_HTML_TEXT));
 			} else {
 				etPaste.setText(bundle.getCharSequence(Intent.EXTRA_TEXT));
 			}
-
 		}
 	}
 
@@ -88,9 +90,11 @@ public class JBClipboard extends Activity {
 		}
 	}
 
-	public void sendIntent(View view) {
+	public void sendHtmlIntent(View view) {
+		//This kind of intent can be handle by this application
+		//Or other applicaiton which handle text/html type Intent
 		Intent intent = new Intent(Intent.ACTION_SEND);
-		// intent.setAction();
+	
 		String htmlText = getHtmltxt(etCopy);
 		String text = getOnlyText(etCopy);
 		intent.putExtra(Intent.EXTRA_HTML_TEXT, htmlText);
@@ -100,7 +104,18 @@ public class JBClipboard extends Activity {
 		Utility.showToastMessage(getApplicationContext(), "Intent sent",
 				Toast.LENGTH_SHORT);
 	}
-
+	/**
+	 * This method gets called when ""
+	 * @param view
+	 */
+	public void sendClipdataIntent(View view){
+		String htmlText = getHtmltxt(etCopy);
+		String plainText = getOnlyText(etCopy);
+		Intent intent = new Intent(this, ClipdataIntentActivity.class);
+		intent.setClipData(ClipData.newHtmlText("HTML text in Intent's clipdata", plainText,
+				htmlText));
+		startActivity(intent);
+	}
 	/**
 	 * This method get the EditText object and returns the HTML text. This
 	 * method can only be run with those EditText which has spannable set and
