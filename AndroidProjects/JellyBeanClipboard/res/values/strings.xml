@@ -3,6 +3,8 @@
     <string name="app_name">JellyBeanClipboard</string>
     <string name="menu_settings">Settings</string>
     <string name="title_activity_jbclipboard">JBClipboard</string>
+    <string name="title_activity_htmlintent">Html Intent Activity</string>
+    <string name="title_activity_clipdataintent">ClipData Intent Activity</string> 
     <!-- CDATA tag is required otherwise you can't have the html text
        properly parsed in Textview  -->
    <string name="tvHtml"><![CDATA[<b>Link:</b> <a href="http://www.code4reference.com">Code4Reference</a>]]></string>
@@ -20,6 +22,8 @@
    <!-- Text string for Text View -->
    <string name="tvCopiedText">Copied text</string>
    <string name="tvcoerceText">Copied coerce Text</string>
+    <string name="tvIntentText">Intent Text</string>
+   <string name="tvIntentHtml">Intent Html</string>
    <string name="tvIntentClipdataText">Intent Clipdata Text</string>
    <string name="tvIntentClipdataHtml">Intent Clipdata Html</string>
 </resources>

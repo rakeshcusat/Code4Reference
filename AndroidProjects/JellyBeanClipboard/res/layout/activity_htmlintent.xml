@@ -6,11 +6,11 @@
     <TextView 
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text = "@string/tvIntentClipdataHtml"
+        android:text = "@string/tvIntentHtml"
         
         />
      <EditText
-        android:id="@+id/etClipBoardHtml"
+        android:id="@+id/etHtml"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:padding="@dimen/padding_medium"
@@ -20,10 +20,10 @@
     <TextView 
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text = "@string/tvIntentClipdataText"
+        android:text = "@string/tvIntentText"
         />
      <EditText
-        android:id="@+id/etClipBoardText"
+        android:id="@+id/etText"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:padding="@dimen/padding_medium"

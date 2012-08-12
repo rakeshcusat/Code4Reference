@@ -16,19 +16,18 @@
             android:label="@string/title_activity_jbclipboard" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+        <activity android:name="com.code4reference.rakesh.jellybeanclipboard.ClipdataIntentActivity"
+            android:label="@string/title_activity_clipdataintent" >
+        </activity>
+        <activity android:name="com.code4reference.rakesh.jellybeanclipboard.HtmlIntentActivity"
+            android:label="@string/title_activity_htmlintent" >
             <intent-filter>
                 <action android:name="android.intent.action.SEND" />
                 <category android:name="android.intent.category.DEFAULT" />
                 <data android:mimeType="text/html" />
-            </intent-filter>
-        </activity>
-        <activity android:name="com.code4reference.rakesh.jellybeanclipboard.ClipdataIntentActivity"
-            android:label="@string/title_activity_jbclipboard" >
-            <intent-filter>
-                <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
     </application>

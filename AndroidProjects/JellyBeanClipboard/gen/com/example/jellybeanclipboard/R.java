@@ -20,19 +20,22 @@ public final class R {
         public static final int ic_launcher=0x7f020001;
     }
     public static final class id {
-        public static final int etCopy=0x7f080002;
-        public static final int etHtml=0x7f080000;
-        public static final int etPaste=0x7f080006;
-        public static final int etPasteCoerceText=0x7f080007;
-        public static final int etText=0x7f080001;
-        public static final int menu_settings=0x7f080008;
-        public static final int rbHtml=0x7f080004;
-        public static final int rbText=0x7f080005;
-        public static final int rbgTextHTML=0x7f080003;
+        public static final int etClipBoardHtml=0x7f080000;
+        public static final int etClipBoardText=0x7f080001;
+        public static final int etCopy=0x7f080004;
+        public static final int etHtml=0x7f080002;
+        public static final int etPaste=0x7f080008;
+        public static final int etPasteCoerceText=0x7f080009;
+        public static final int etText=0x7f080003;
+        public static final int menu_settings=0x7f08000a;
+        public static final int rbHtml=0x7f080006;
+        public static final int rbText=0x7f080007;
+        public static final int rbgTextHTML=0x7f080005;
     }
     public static final class layout {
         public static final int activity_clipdataintent=0x7f030000;
-        public static final int activity_jbclipboard=0x7f030001;
+        public static final int activity_htmlintent=0x7f030001;
+        public static final int activity_jbclipboard=0x7f030002;
     }
     public static final class menu {
         public static final int activity_jbclipboard=0x7f070000;
@@ -41,26 +44,30 @@ public final class R {
         public static final int app_name=0x7f050000;
         /**  Text string for button 
          */
-        public static final int btCopy=0x7f050004;
-        public static final int btPaste=0x7f050005;
-        public static final int btSendClipdataIntent=0x7f050007;
-        public static final int btSendHtmlIntent=0x7f050006;
+        public static final int btCopy=0x7f050006;
+        public static final int btPaste=0x7f050007;
+        public static final int btSendClipdataIntent=0x7f050009;
+        public static final int btSendHtmlIntent=0x7f050008;
         public static final int menu_settings=0x7f050001;
         /**  Text string for RadioButton 
          */
-        public static final int rbHtml=0x7f050008;
-        public static final int rbText=0x7f050009;
+        public static final int rbHtml=0x7f05000a;
+        public static final int rbText=0x7f05000b;
+        public static final int title_activity_clipdataintent=0x7f050004;
+        public static final int title_activity_htmlintent=0x7f050003;
         public static final int title_activity_jbclipboard=0x7f050002;
         /**  Text string for Text View 
          */
-        public static final int tvCopiedText=0x7f05000a;
+        public static final int tvCopiedText=0x7f05000c;
         /**  CDATA tag is required otherwise you can't have the html text
        properly parsed in Textview  
          */
-        public static final int tvHtml=0x7f050003;
-        public static final int tvIntentClipdataHtml=0x7f05000d;
-        public static final int tvIntentClipdataText=0x7f05000c;
-        public static final int tvcoerceText=0x7f05000b;
+        public static final int tvHtml=0x7f050005;
+        public static final int tvIntentClipdataHtml=0x7f050011;
+        public static final int tvIntentClipdataText=0x7f050010;
+        public static final int tvIntentHtml=0x7f05000f;
+        public static final int tvIntentText=0x7f05000e;
+        public static final int tvcoerceText=0x7f05000d;
     }
     public static final class style {
         public static final int AppTheme=0x7f060000;

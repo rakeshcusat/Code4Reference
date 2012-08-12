@@ -8,7 +8,6 @@ import android.widget.EditText;
 import android.widget.Toast;
 import android.content.ClipData;
 import android.content.ClipDescription;
-import android.content.ClipboardManager;
 
 import com.example.jellybeanclipboard.R;
 
@@ -21,8 +20,8 @@ public class ClipdataIntentActivity extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_clipdataintent);
-		etHtml = (EditText) findViewById(R.id.etHtml);
-		etText = (EditText) findViewById(R.id.etText);
+		etHtml = (EditText) findViewById(R.id.etClipBoardHtml);
+		etText = (EditText) findViewById(R.id.etClipBoardText);
 
 		// Get the intent that started this activity
 		Intent intent = getIntent();

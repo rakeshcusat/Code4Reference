@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.ClipData;
 import android.content.ClipDescription;
 import android.content.ClipboardManager;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.Html;
@@ -24,6 +25,17 @@ public class JBClipboard extends Activity {
 	RadioButton rbHtml;
 	ClipboardManager mClipboard;
 
+	ClipboardManager.OnPrimaryClipChangedListener mPrimaryChangeListener = new ClipboardManager.OnPrimaryClipChangedListener() {
+		/**
+		 * This method is a callback. It get called when the primary clip 
+		 * on the clipboard changes. 
+		 */
+		public void onPrimaryClipChanged() {
+			Utility.showToastMessage(getApplicationContext(),
+					"Primary clipdata changed", Toast.LENGTH_SHORT);
+		}
+	};
+
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -35,24 +47,14 @@ public class JBClipboard extends Activity {
 		rbText = (RadioButton) findViewById(R.id.rbText);
 		rbHtml = (RadioButton) findViewById(R.id.rbHtml);
 
-		mClipboard = (ClipboardManager) getSystemService(this.CLIPBOARD_SERVICE);
-
-		// Get the intent that started this activity
-		Intent intent = getIntent();
-		if (intent != null && intent.getType() != null
-				&& intent.getType().equals("text/html")) {
-			//This contition will full-fill when this application receive the 
-			//intent who's type is "test/html". In this application sendHtmlIntent
-			//method sends this type of Intent. 
-			Bundle bundle = intent.getExtras();
-			if (rbHtml.isChecked()) {
-				etPaste.setText(bundle.getCharSequence(Intent.EXTRA_HTML_TEXT));
-			} else {
-				etPaste.setText(bundle.getCharSequence(Intent.EXTRA_TEXT));
-			}
-		}
+		mClipboard = (ClipboardManager) getSystemService(Context.CLIPBOARD_SERVICE);
+		mClipboard.addPrimaryClipChangedListener(mPrimaryChangeListener);
 	}
-
+	
+	/**
+	 * This method gets called when "Copy" button get pressed.
+	 * @param view
+	 */
 	public void copyHtml(View view) {
 		String htmlText = getHtmltxt(etCopy);
 		String plainText = getOnlyText(etCopy);
@@ -62,7 +64,10 @@ public class JBClipboard extends Activity {
 		Utility.showToastMessage(getApplicationContext(), "Copied html text",
 				Toast.LENGTH_SHORT);
 	}
-
+	/**
+	 * This method gets called when "Paste" button get pressed.
+	 * @param view
+	 */
 	public void pasteHtml(View view) {
 		// Check if there is primary clip exsiting.
 		// If it does then echeck the mime type to make sure
@@ -89,33 +94,42 @@ public class JBClipboard extends Activity {
 			etPasteCoerceText.setText(item.coerceToText(this));
 		}
 	}
-
+	/**
+	 * This method gets called when "send Html Intent" button get pressed.
+	 * @param view
+	 */
 	public void sendHtmlIntent(View view) {
-		//This kind of intent can be handle by this application
-		//Or other applicaiton which handle text/html type Intent
+		// This kind of intent can be handle by this application
+		// Or other application which handle text/html type Intent
 		Intent intent = new Intent(Intent.ACTION_SEND);
-	
+
 		String htmlText = getHtmltxt(etCopy);
 		String text = getOnlyText(etCopy);
 		intent.putExtra(Intent.EXTRA_HTML_TEXT, htmlText);
 		intent.putExtra(Intent.EXTRA_TEXT, text);
 		intent.setType("text/html");
 		startActivity(Intent.createChooser(intent, null));
-		Utility.showToastMessage(getApplicationContext(), "Intent sent",
-				Toast.LENGTH_SHORT);
 	}
+
 	/**
-	 * This method gets called when ""
+	 * This method gets called when "send Clipdata Intent" button get pressed.
+	 * 
 	 * @param view
 	 */
-	public void sendClipdataIntent(View view){
+	public void sendClipdataIntent(View view) {
 		String htmlText = getHtmltxt(etCopy);
 		String plainText = getOnlyText(etCopy);
 		Intent intent = new Intent(this, ClipdataIntentActivity.class);
-		intent.setClipData(ClipData.newHtmlText("HTML text in Intent's clipdata", plainText,
-				htmlText));
+		intent.setClipData(ClipData.newHtmlText(
+				"HTML text in Intent's clipdata", plainText, htmlText));
 		startActivity(intent);
 	}
+	@Override
+    protected void onDestroy() {
+        super.onDestroy();
+        //Remove the ClipChanged Listener to save the resources.
+        mClipboard.removePrimaryClipChangedListener(mPrimaryChangeListener);
+    }
 	/**
 	 * This method get the EditText object and returns the HTML text. This
 	 * method can only be run with those EditText which has spannable set and
@@ -130,7 +144,7 @@ public class JBClipboard extends Activity {
 	}
 
 	/**
-	 * This method takes the EditText obje which has spannable object with HTML
+	 * This method takes the EditText object which has spannable object with HTML
 	 * text and returns the only text.
 	 * 
 	 * @param editText
