@@ -31,6 +31,8 @@ public class JBClipboard extends Activity {
 		 * on the clipboard changes. 
 		 */
 		public void onPrimaryClipChanged() {
+			//Toast message will appear whenever the clipboad 
+			//primary data changes.
 			Utility.showToastMessage(getApplicationContext(),
 					"Primary clipdata changed", Toast.LENGTH_SHORT);
 		}
@@ -61,8 +63,7 @@ public class JBClipboard extends Activity {
 
 		mClipboard.setPrimaryClip(ClipData.newHtmlText("HTML Text", plainText,
 				htmlText));
-		Utility.showToastMessage(getApplicationContext(), "Copied html text",
-				Toast.LENGTH_SHORT);
+		
 	}
 	/**
 	 * This method gets called when "Paste" button get pressed.
@@ -82,13 +83,9 @@ public class JBClipboard extends Activity {
 			// HTML in the Textview.
 			if (rbHtml.isChecked()) {
 				etPaste.setText(item.getHtmlText());
-				Utility.showToastMessage(getApplicationContext(),
-						"HTML text pasted", Toast.LENGTH_SHORT);
 			} else {
 				// Paste the only text version.
 				etPaste.setText(item.getText());
-				Utility.showToastMessage(getApplicationContext(),
-						"Text pasted", Toast.LENGTH_SHORT);
 			}
 			// Paste the CoerceText .
 			etPasteCoerceText.setText(item.coerceToText(this));

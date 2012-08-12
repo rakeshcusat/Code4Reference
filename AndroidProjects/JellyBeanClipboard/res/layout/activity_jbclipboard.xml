@@ -6,11 +6,12 @@
 
     <EditText
         android:id="@+id/etCopy"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
         android:padding="@dimen/padding_medium"
-        android:minLines="4"
-        android:inputType="textWebEditText"
+        android:gravity="top"   
+        android:scrollHorizontally="false"
+        android:inputType="textMultiLine"
          />
     <RadioGroup 
        android:id="@+id/rbgTextHTML"
@@ -73,9 +74,10 @@
    <EditText
        android:id="@+id/etPaste" 
        android:layout_width="fill_parent"
-       android:layout_height="50dp"
-       android:minLines="4"
-       android:inputType="textWebEditText"
+       android:layout_height="wrap_content"
+       android:inputType="textMultiLine"
+        android:gravity="top"   
+        android:scrollHorizontally="false"
        />
    <TextView
        android:layout_width="fill_parent"
@@ -84,7 +86,8 @@
    <EditText
        android:id="@+id/etPasteCoerceText" 
        android:layout_width="fill_parent"
-       android:layout_height="50dp"
-       android:minLines="4"
-       android:inputType="text"/>
+       android:layout_height="wrap_content"
+       android:gravity="top"   
+       android:scrollHorizontally="false"
+       android:inputType="textMultiLine"/>
 </LinearLayout>

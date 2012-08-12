@@ -23,7 +23,7 @@ public class ClipdataIntentActivity extends Activity {
 		etHtml = (EditText) findViewById(R.id.etClipBoardHtml);
 		etText = (EditText) findViewById(R.id.etClipBoardText);
 
-		// Get the intent that started this activity
+		//Get the intent that started this activity
 		Intent intent = getIntent();
 		if (intent != null) {
 			ClipData clipdata = intent.getClipData();

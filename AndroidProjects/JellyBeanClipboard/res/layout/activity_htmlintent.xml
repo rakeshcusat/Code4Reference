@@ -3,31 +3,31 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical" >
-    <TextView 
+
+    <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text = "@string/tvIntentHtml"
-        
-        />
-     <EditText
+        android:text="@string/tvIntentHtml" />
+
+    <EditText
         android:id="@+id/etHtml"
         android:layout_width="match_parent"
-        android:layout_height="50dp"
+        android:layout_height="wrap_content"
+        android:inputType="textMultiLine"
         android:padding="@dimen/padding_medium"
-        android:minLines="4"
-        android:inputType="textWebEditText"
-         />
-    <TextView 
+        android:scrollHorizontally="false" />
+
+    <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text = "@string/tvIntentText"
-        />
-     <EditText
+        android:text="@string/tvIntentText" />
+
+    <EditText
         android:id="@+id/etText"
         android:layout_width="match_parent"
-        android:layout_height="50dp"
+        android:layout_height="wrap_content"
+        android:inputType="textMultiLine"
         android:padding="@dimen/padding_medium"
-        android:minLines="4"
-        android:inputType="textWebEditText"
-         />
+        android:scrollHorizontally="false" />
+
 </LinearLayout>

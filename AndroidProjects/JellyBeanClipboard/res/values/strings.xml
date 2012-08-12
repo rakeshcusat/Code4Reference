@@ -20,10 +20,10 @@
    <string name="rbText">Paste Text</string>
    
    <!-- Text string for Text View -->
-   <string name="tvCopiedText">Copied text</string>
-   <string name="tvcoerceText">Copied coerce Text</string>
-    <string name="tvIntentText">Intent Text</string>
-   <string name="tvIntentHtml">Intent Html</string>
-   <string name="tvIntentClipdataText">Intent Clipdata Text</string>
-   <string name="tvIntentClipdataHtml">Intent Clipdata Html</string>
+   <string name="tvCopiedText"><b><i>Copied text</i></b></string>
+   <string name="tvcoerceText"><b><i>Copied coerce Text</i></b></string>
+    <string name="tvIntentText"><b><i>Intent Text</i></b></string>
+   <string name="tvIntentHtml"><b><i>Intent Html</i></b></string>
+   <string name="tvIntentClipdataText"><b><i>Intent Clipdata Text</i></b></string>
+   <string name="tvIntentClipdataHtml"><b><i>Intent Clipdata Html</i></b></string>
 </resources>
