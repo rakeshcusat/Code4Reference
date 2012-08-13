@@ -1,0 +1,4 @@
+# git ignore list
+####################
+build
+.gradle
