@@ -1,0 +1,11 @@
+buildscript {
+    repositories {
+        maven {
+            url uri('../repo')
+        }
+    }
+    dependencies {
+        classpath group: 'com.code4reference', name: 'code4ReferencePlugin', version: '1.1-SNAPSHOT'
+    }
+}
+apply plugin: 'code4reference'
