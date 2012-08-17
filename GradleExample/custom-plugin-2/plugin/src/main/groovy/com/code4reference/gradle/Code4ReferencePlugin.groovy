@@ -3,8 +3,8 @@ package com.code4reference.gradle;
 import org.gradle.api.*;
 
 class Code4ReferencePluginExtension {
-    def String message = 'Hello from Code4Reference'
-    def String sender = 'Code4Reference'
+    String message = 'Hello from Code4Reference'
+    String sender = 'Code4Reference'
 }
 
 class Code4ReferencePlugin implements Plugin<Project> {

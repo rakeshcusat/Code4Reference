@@ -14,7 +14,9 @@ buildscript {
 apply plugin: 'code4reference'
 
 
-c4rArguments.sender = 'Rakesh'
-c4rArguments.message = 'Hello there !!!!'
+c4rArguments {
+sender = 'Rakesh'
+message = 'Hello there !!!!'
+}
 
 
