@@ -7,6 +7,9 @@ class Code4ReferenceTask extends DefaultTask {
     
     @TaskAction
     def showMessage() {
-        println "${project.c4rArguments.sender} : ${project.c4rArguments.message}"
+        println "--------------------------------------------------------------------"
+        println "From : ${project.c4rArgs.sender}, message : ${project.c4rArgs.message}"
+        println "To : ${project.c4rArgs.nestedArgs.receiver}, email : ${project.c4rArgs.nestedArgs.email}"
+        
     }
 }
