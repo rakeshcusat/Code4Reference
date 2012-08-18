@@ -1,0 +1,10 @@
+task env_read<<{
+
+  println "$System.env.HOME"
+
+  //Other way
+  println System.getenv()['HOME'] 
+
+  //
+  
+}
