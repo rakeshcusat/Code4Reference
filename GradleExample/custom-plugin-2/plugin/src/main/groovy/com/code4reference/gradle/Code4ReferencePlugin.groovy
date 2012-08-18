@@ -19,9 +19,7 @@ class Code4ReferencePlugin implements Plugin<Project> {
            project.extensions.create("c4rArgs", Code4ReferencePluginExtension)
            project.c4rArgs.extensions.create("nestedArgs",C4RNestedPluginExtention)
            project.task('c4rTask', type: Code4ReferenceTask)
-    }
-
-  
+    }  
 }
 
 

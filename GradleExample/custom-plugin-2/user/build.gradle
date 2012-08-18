@@ -13,7 +13,6 @@ buildscript {
 
 apply plugin: 'code4reference'
 
-
 c4rArgs {
     sender = 'Rakesh'
     message = 'Hello there !!!!'
