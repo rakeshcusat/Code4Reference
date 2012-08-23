@@ -16,3 +16,6 @@ tempclasses
 # OS generated files #
 ######################
 .DS_Store?
+#Bin folder
+#################
+bin/

@@ -1,0 +1,37 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" 
+    android:orientation="vertical">
+
+     <Button
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/padding_medium"
+        android:text="@string/start_repeating_alarm"
+        android:onClick="startRepeatingAlarm"
+        tools:context=".EnableDisableBroadcastReceiver" />
+     <Button
+       android:layout_width="fill_parent"
+       android:layout_height="wrap_content"
+       android:padding="@dimen/padding_medium"
+       android:text="@string/cancel_alarm"
+       android:onClick="cancelAlarm"
+       tools:context=".EnableDisableBroadcastReceiver" />
+     
+    <Button
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/padding_medium"
+        android:text="@string/enable_broadcast_receiver"
+        android:onClick="enableBroadcastReceiver"
+        tools:context=".EnableDisableBroadcastReceiver" />
+   <Button
+       android:layout_width="fill_parent"
+       android:layout_height="wrap_content"
+       android:padding="@dimen/padding_medium"
+       android:text="@string/disable_broadcast_receiver"
+       android:onClick="disableBroadcastReceiver"
+       tools:context=".EnableDisableBroadcastReceiver" />
+       
+</LinearLayout>
