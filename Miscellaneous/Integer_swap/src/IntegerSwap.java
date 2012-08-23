@@ -22,6 +22,11 @@ public class IntegerSwap {
 		is.swap(a, b);
 		System.out.println("a : " + a +", b : " + b);
 	}
+	/**
+	 * This solution has bad effect on the jvm. It changes the value of the object 
+	 * everywhere in the running JVM.
+	 * 
+	 **/
 	public void swap(Integer aArg , Integer bArg){
 		try {
 			Field valueField = Integer.class.getDeclaredField("value");
