@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.6"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/3"/>
+	<classpathentry kind="lib" path="/home/rakesh/programming/refcode/caliper/caliper/target/caliper-1.0-SNAPSHOT.jar"/>
+	<classpathentry kind="lib" path="/home/rakesh/.m2/repository/com/google/guava/guava/12.0/guava-12.0.jar"/>
+	<classpathentry kind="lib" path="/home/rakesh/programming/refcode/caliper/examples/gson-2.2.2.jar"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>

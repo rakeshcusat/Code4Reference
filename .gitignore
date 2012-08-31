@@ -10,6 +10,9 @@
 *.dex
 *.ap_
 tempclasses
+#Caliper temp folders
+####################
+.metadata/
 # temp file#
 ###########
 *~
