@@ -10,4 +10,4 @@ This project contains 4 Folders
 3. JavaPrograms : Contains java programs, some mini projects, and javadesign related project.
 4. PythonPrograsm : Contains Python script. I write these script when I fiddle with python modules/packages.  
 5. GradleExample : Contains the gradle script.
-6. CaliperProjects: Contains the microbenchmarking project.
+6. CaliperProjects: Contains the microbenchmarking project using google caliper.
