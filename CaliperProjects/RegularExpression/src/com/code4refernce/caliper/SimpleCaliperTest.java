@@ -16,7 +16,6 @@ public class SimpleCaliperTest extends SimpleBenchmark {
 //	1/234/567/8901
 //	12345678901
 
-	//String extensiveregex = "^\\d?(?:(?:[\\+]?(?:[\\d]{1,3}(?:[ ]+|[\\-.])))?[(]?(?:[\\d]{3})[\\-/)]?(?:[ ]+)?)?(?:[a-zA-Z2-9][a-zA-Z0-9 \\-.]{6,})(?:(?:[ ]+|[xX]|(i:ext[\\.]?)){1,2}(?:[\\d]{1,5}))?$";
 	String extensiveregex ="^\\d?(?>(?>\\+?(?>\\d{1,3}(?:\\s+|[.-])))?\\(?\\d{3}[/)-]?\\s*)?+(?>[a-zA-Z2-9][a-zA-Z0-9\\s.-]{6,})(?>(?>\\s+|[xX]|(i:ext\\s?)){1,2}\\d{1,5})?+$";
 	Pattern EXTENSIVE_REGEX_PATTERN =  Pattern.compile(extensiveregex);
 
@@ -67,8 +66,11 @@ public class SimpleCaliperTest extends SimpleBenchmark {
 	public boolean extensiveMDNCheckRegularMethod(String mdn){
 		//strip the character which not numeric or 'x' character.
 		try{
-			String stripedmdn = stripString(mdn);	
-
+			StringBuilder stripedMDN = new StringBuilder();
+			if(!stripString(mdn, stripedMDN))
+				return false;
+			String stripedmdn = stripedMDN.toString();
+			
 			if(stripedmdn.length() >= 10 && stripedmdn.length() <= 11 && (!stripedmdn.contains("x") || !stripedmdn.contains("X"))){
 				//For following condition 
 				//1-123-456-7868 or  123-456-7868
@@ -76,7 +78,7 @@ public class SimpleCaliperTest extends SimpleBenchmark {
 			}else if ( stripedmdn.length() >= 15 && stripedmdn.length() <= 16  ) {
 				//1-123-456-7868 ext 2345 or  123-456-7868 ext 2345
 				//
-				if ( stripedmdn.contains("x") ) {
+				if ( stripedmdn.contains("x") ) { 
 					int index = stripedmdn.indexOf("x");
 					if(index >= 9 && index <= 10){
 						return true;
@@ -92,32 +94,31 @@ public class SimpleCaliperTest extends SimpleBenchmark {
 			return false;
 		}
 		return false;
-
 	}
 	/**
 	 * Strip the other character and leave only x and numeric values.
 	 * @param extendedMdn
 	 * @return
 	 */
-	public String stripString(String extendedMdn)throws Exception {
+	private boolean stripString(String extendedMdn, StringBuilder mdn){
 		int len = extendedMdn.length();
-		char mdn[] = new char[len];
-		int mdnIndex =0;
+		boolean result = true;
 		for(int index = 0; index < len; index++){
 			char ch = extendedMdn.charAt(index);
 			if((ch >= '0' && ch <='9') || ch == 'x'|| ch == 'X'){
-				mdn[mdnIndex++] = ch;
-			}else if (ch == ' ' || ch == '.' || ch == '-' || ch == '/' 
+				mdn.append(ch);
+			}else if (ch == ' ' || ch == '.'  || ch == '/' 
 				|| ch== 'e' || ch == 'E' || ch =='t' || ch == 'T'
-				|| (index == 0 && ch == '+')){
+				|| (index == 0 && ch == '+')
+				|| (index > 1 && ch == '-')){
 				continue;
 			}else if(index == 0 && ch == '-'){
-				throw new Exception("Format exception");
+				result = false;
 			}else{
-				throw new Exception("Format exception");
+				result = false;
 			}
 		}
-		return new String(mdn);
+		return result;
 	}
 
 	private boolean mdnExtensiveCheckRegEx(String mdn){
