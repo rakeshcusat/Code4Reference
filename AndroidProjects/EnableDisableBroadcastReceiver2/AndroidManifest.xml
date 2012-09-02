@@ -12,7 +12,7 @@
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
         <activity
-            android:name=".EnableDisable"
+            android:name=".RegisterUnregister"
             android:label="@string/title_activity_enable_disable" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

@@ -8,16 +8,16 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:padding="@dimen/padding_medium"
-        android:text="@string/enable_broadcast_receiver"
-        android:onClick="enableBroadcastReceiver"
-        tools:context=".EnableDisable" />
+        android:text="@string/register_broadcast_receiver"
+        android:onClick="registerBroadcastReceiver"
+        tools:context=".RegisterUnregister" />
    <Button
        android:layout_width="fill_parent"
        android:layout_height="wrap_content"
        android:padding="@dimen/padding_medium"
-       android:text="@string/disable_broadcast_receiver"
-       android:onClick="disableBroadcastReceiver"
-       tools:context=".EnableDisable" />
+       android:text="@string/unregister_broadcast_receiver"
+       android:onClick="unregisterBroadcastReceiver"
+       tools:context=".RegisterUnregister" />
        
 </LinearLayout>
 

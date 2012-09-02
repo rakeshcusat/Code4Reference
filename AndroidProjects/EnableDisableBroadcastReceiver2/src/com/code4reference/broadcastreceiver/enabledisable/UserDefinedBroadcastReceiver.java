@@ -11,13 +11,11 @@ import android.widget.Toast;
 
 public class UserDefinedBroadcastReceiver extends BroadcastReceiver {
 
-	final public static String ONE_TIME = "onetime";
 	@Override
 	public void onReceive(Context context, Intent intent) {
 		
          //You can do the processing here update the widget/remote views.
          StringBuilder msgStr = new StringBuilder("Current time : ");
-         
          Format formatter = new SimpleDateFormat("hh:mm:ss a");
          msgStr.append(formatter.format(new Date()));
          Toast.makeText(context, msgStr, Toast.LENGTH_SHORT).show();
