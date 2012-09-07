@@ -1,0 +1,11 @@
+<resources>
+
+    <string name="app_name">AndroidLayout</string>
+    <string name="menu_settings">Settings</string>
+    <string name="title_activity_xmllayout">XMLLayoutActivity</string>
+    <string name="c4r">Code4Reference.com</string>
+    <string name="ok">Ok</string>
+    <string name="OtherActivity">Other Activity</string>
+    <string name="dynamic_layout_activity">Dynamic Layout Activity</string>
+
+</resources>

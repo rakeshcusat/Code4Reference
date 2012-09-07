@@ -17,6 +17,7 @@ public class SimpleCaliperTest extends SimpleBenchmark {
 //	12345678901
 
 	String extensiveregex ="^\\d?(?>(?>\\+?(?>\\d{1,3}(?:\\s+|[.-])))?\\(?\\d{3}[/)-]?\\s*)?+(?>[a-zA-Z2-9][a-zA-Z0-9\\s.-]{6,})(?>(?>\\s+|[xX]|(i:ext\\s?)){1,2}\\d{1,5})?+$";
+	
 	Pattern EXTENSIVE_REGEX_PATTERN =  Pattern.compile(extensiveregex);
 
 	String mdn[][];
