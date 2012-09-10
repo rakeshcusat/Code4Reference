@@ -22,3 +22,7 @@ tempclasses
 #Bin folder
 #################
 bin/
+
+#Gradle temp files
+#################
+.gradle/
