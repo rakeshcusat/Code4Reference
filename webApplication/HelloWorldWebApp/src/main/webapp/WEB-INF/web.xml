@@ -12,7 +12,7 @@
          <param-name>contextConfigLocation</param-name>
          <param-value>
             /WEB-INF/appContext/mappings.xml
-            /WEB-INF/appContext/pages.xml
+            /WEB-INF/appContext/beans.xml
          </param-value>
       </init-param>
    </servlet>
