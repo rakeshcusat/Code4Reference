@@ -9,8 +9,8 @@
         android:layout_centerHorizontal="true"
         android:layout_centerVertical="true"
         android:padding="@dimen/padding_medium"
-        android:text="@string/default_orientation"
-        android:textColor="#000000"
+        android:text="@string/landscape_orientation"
+        android:textColor="#000808"
         android:textSize="20dp"
         android:textStyle="bold|italic"
         tools:context=".MainActivity" />

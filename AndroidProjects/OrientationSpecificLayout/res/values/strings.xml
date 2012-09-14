@@ -3,6 +3,7 @@
     <string name="app_name">OrientationSpecificLayout</string>
     <string name="menu_settings">Settings</string>
     <string name="title_activity_main">Orientation Specific Layout</string>
+    <string name="title_activity_dynamic">Dynamically Layout</string>
     <string name="default_orientation">This is default Orientation</string>
     <string name="landscape_orientation">This is Landscape Orientation</string>
     <string name="portrait_orientation">This is Portrait Orientation</string>
