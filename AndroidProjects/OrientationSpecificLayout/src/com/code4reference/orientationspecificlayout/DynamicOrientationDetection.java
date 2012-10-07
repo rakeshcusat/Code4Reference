@@ -9,6 +9,7 @@ public class DynamicOrientationDetection extends Activity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		//The below code provide the current orientation of the screen.
 		setSpecificLayout(this.getResources().getConfiguration().orientation);
 	}
     
@@ -18,7 +19,13 @@ public class DynamicOrientationDetection extends Activity {
 		setSpecificLayout(newConfig.orientation);
 	}
 	
+	/**
+	 * Set the specific layout based on the orientation.
+	 * @param orientation
+	 */
 	public void setSpecificLayout(int orientation){
+		//Based on the current orientation, the specific 
+		//layout is set.
     	if (orientation == Configuration.ORIENTATION_LANDSCAPE){
     		setContentView(R.layout.activity_dynamic_land);
     	}

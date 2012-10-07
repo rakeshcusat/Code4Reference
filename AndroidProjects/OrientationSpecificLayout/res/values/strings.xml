@@ -2,9 +2,15 @@
 
     <string name="app_name">OrientationSpecificLayout</string>
     <string name="menu_settings">Settings</string>
-    <string name="title_activity_main">Orientation Specific Layout</string>
+    <string name="title_activity_main">Orientation layout options</string>
+    <string name="title_activity_automatic">Automatic orientation</string>
     <string name="title_activity_dynamic">Dynamically Layout</string>
+    <string name="title_acivity_restricted">Restricted Orientation</string>
     <string name="default_orientation">This is default Orientation</string>
     <string name="landscape_orientation">This is Landscape Orientation</string>
     <string name="portrait_orientation">This is Portrait Orientation</string>
+    <string name="restricted_orientation">This is landscape restricted orientation</string>
+    <string name="bt_automatic_orientation">Automatic orientation</string>
+    <string name="bt_dynamic_orientation">Dynamic orientation</string>
+    <string name="bt_restricted_orientation">Restricted orientation</string>
 </resources>

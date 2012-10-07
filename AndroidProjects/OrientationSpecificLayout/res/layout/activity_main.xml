@@ -1,0 +1,32 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+    
+<Button
+    android:id="@+id/btAutomatic"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:text="@string/bt_automatic_orientation"
+    android:onClick="autoOrientationDetection"
+    
+    tools:context=".MainActivity"
+    />
+<Button
+    android:id="@+id/btDynamic"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:text="@string/bt_dynamic_orientation"
+    android:onClick="dynamicOrientationDetection"
+    tools:context=".MainActivity"
+    />
+<Button
+    android:id="@+id/btRestricted"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:text="@string/bt_restricted_orientation"
+    android:onClick="restrictedOrientation"
+    tools:context=".MainActivity"
+    />
+</LinearLayout>

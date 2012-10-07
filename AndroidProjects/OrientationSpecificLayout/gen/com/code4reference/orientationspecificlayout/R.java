@@ -20,23 +20,34 @@ public final class R {
         public static final int ic_launcher=0x7f020001;
     }
     public static final class id {
-        public static final int menu_settings=0x7f080000;
+        public static final int btAutomatic=0x7f080000;
+        public static final int btDynamic=0x7f080001;
+        public static final int btRestricted=0x7f080002;
+        public static final int menu_settings=0x7f080003;
     }
     public static final class layout {
-        public static final int activity_dynamic_land=0x7f030000;
-        public static final int activity_dynamic_port=0x7f030001;
-        public static final int activity_main=0x7f030002;
+        public static final int activity_automatic=0x7f030000;
+        public static final int activity_dynamic_land=0x7f030001;
+        public static final int activity_dynamic_port=0x7f030002;
+        public static final int activity_main=0x7f030003;
+        public static final int activity_restricted=0x7f030004;
     }
     public static final class menu {
         public static final int activity_main=0x7f070000;
     }
     public static final class string {
         public static final int app_name=0x7f050000;
-        public static final int default_orientation=0x7f050004;
-        public static final int landscape_orientation=0x7f050005;
+        public static final int bt_automatic_orientation=0x7f05000a;
+        public static final int bt_dynamic_orientation=0x7f05000b;
+        public static final int bt_restricted_orientation=0x7f05000c;
+        public static final int default_orientation=0x7f050006;
+        public static final int landscape_orientation=0x7f050007;
         public static final int menu_settings=0x7f050001;
-        public static final int portrait_orientation=0x7f050006;
-        public static final int title_activity_dynamic=0x7f050003;
+        public static final int portrait_orientation=0x7f050008;
+        public static final int restricted_orientation=0x7f050009;
+        public static final int title_acivity_restricted=0x7f050005;
+        public static final int title_activity_automatic=0x7f050003;
+        public static final int title_activity_dynamic=0x7f050004;
         public static final int title_activity_main=0x7f050002;
     }
     public static final class style {

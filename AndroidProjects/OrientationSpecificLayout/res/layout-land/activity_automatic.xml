@@ -13,6 +13,6 @@
         android:textColor="#000808"
         android:textSize="20dp"
         android:textStyle="bold|italic"
-        tools:context=".MainActivity" />
+        tools:context=".AutomaticOrientation" />
 
 </RelativeLayout>

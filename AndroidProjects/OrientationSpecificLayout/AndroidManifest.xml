@@ -19,12 +19,31 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+         <activity
+            android:name=".AutomaticOrientation"
+            android:configChanges="orientation"
+            android:label="@string/title_activity_automatic" >
+            <intent-filter>
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
         <activity
             android:name=".DynamicOrientationDetection"
             android:configChanges="orientation"
             android:label="@string/title_activity_dynamic" >
             <intent-filter>
-              <!--   <action android:name="android.intent.action.MAIN" />  -->
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <!-- screenOrientation restrict the Orientation 
+        of the screen to specific one. As shown below it 
+        is restricted to landscape orientation.
+         -->
+         <activity
+            android:name=".RestrictedOrientation"
+            android:screenOrientation="landscape"
+            android:label="@string/title_acivity_restricted" >
+            <intent-filter>
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
