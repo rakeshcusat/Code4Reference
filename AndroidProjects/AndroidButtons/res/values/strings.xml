@@ -1,0 +1,16 @@
+<resources>
+
+    <string name="app_name">AnroidButtons</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="menu_settings">Settings</string>
+    <string name="title_activity_main">Code4Reference</string>
+    <string name="strBtBasic">Basic Button</string>
+    <string name="strBtBorderless">Borderless Button</string>
+    <string name="strRadioButton">Radio Button</string>
+    <string name="strToggleButton">Toggle Button</string>
+    <string name="strImageButton">Image Button</string>
+    <string name="strRBYes">Yes</string>
+    <string name="strRBNo">No</string>
+    <string name="strIBContentDescription">This is simple Image button example.</string>
+
+</resources>

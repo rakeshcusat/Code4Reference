@@ -1,0 +1,62 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="basicButtonOnClickHandler"
+        android:text="@string/strBtBasic" />
+
+    <Button
+        android:id="@+id/btBorderless"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        style="?android:attr/borderlessButtonStyle"
+        android:text="@string/strBtBorderless" />
+
+    <ImageButton
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:contentDescription="@string/strIBContentDescription"
+        android:onClick="imageButtonOnClickHandler"
+        android:src="@drawable/ic_action_search" />
+
+    <RadioGroup
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical" >
+
+        <RadioButton
+            android:id="@+id/rbYes"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="onRadioButtonClicked"
+            android:text="@string/strRBYes" />
+
+        <RadioButton
+            android:id="@+id/rbNo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="onRadioButtonClicked"
+            android:text="@string/strRBNo" />
+    </RadioGroup>
+
+    <ToggleButton
+        android:id="@+id/togglebutton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="onToggleClicked"
+        android:textOff="Toggle off"
+        android:textOn="Toggle on" />
+    <Switch 
+        android:id="@+id/switchbutton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textOff="Switch off"
+        android:textOn="Switch on"
+        android:layout_marginBottom="32dip" />
+
+</LinearLayout>
