@@ -14,7 +14,7 @@ import org.apache.jmeter.threads.JMeterVariables;
 
 public class FloatRandomNumber extends AbstractFunction {
 	private static final List<String> desc = new LinkedList<String>();
-	private static final String KEY = "__floatRandomNumber";
+	private static final String KEY = "__FloatRandomNumber";
 	private static final Random random = new Random(System.currentTimeMillis());
 
 	static {
@@ -22,7 +22,7 @@ public class FloatRandomNumber extends AbstractFunction {
 	}
 	private Object[] values;
 
-	/**
+	/**indian stock exchange for last 1 month
 	 * No-arg constructor.
 	 */
 	public FloatRandomNumber() {
