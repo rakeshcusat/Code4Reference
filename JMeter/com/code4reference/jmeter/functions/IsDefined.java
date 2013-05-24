@@ -1,4 +1,4 @@
-package code4reference.com.jmeter.functions;
+package com.code4reference.jmeter.functions;
 
 import java.util.Collection;
 import java.util.LinkedList;
@@ -27,6 +27,7 @@ public class IsDefined extends AbstractFunction {
      * No-arg constructor.
      */
     public IsDefined() {
+        super();
     }
 
     /** {@inheritDoc} */

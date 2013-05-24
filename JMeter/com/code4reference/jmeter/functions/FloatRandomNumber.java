@@ -1,4 +1,4 @@
-package code4reference.com.jmeter.functions;
+package com.code4reference.jmeter.functions;
 
 import java.util.Collection;
 import java.util.LinkedList;
@@ -26,6 +26,7 @@ public class FloatRandomNumber extends AbstractFunction {
 	 * No-arg constructor.
 	 */
 	public FloatRandomNumber() {
+        super();
 	}
 
 	/**
