@@ -16,7 +16,7 @@ public class IsDefined extends AbstractFunction {
     private static final List<String> desc = new LinkedList<String>();
     private static final String KEY = "__IsDefined";
     private CompoundVariable varName;
-    private static final int MAX_PARAM_COUNT = 1
+    private static final int MAX_PARAM_COUNT = 1;
  
     static {
         desc.add("Variable name");

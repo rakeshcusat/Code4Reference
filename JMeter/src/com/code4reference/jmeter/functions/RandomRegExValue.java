@@ -1,9 +1,9 @@
 package com.code4reference.jmeter.functions;
 
+import java.lang.Math;
 import java.util.Collection;
 import java.util.LinkedList;
 import java.util.List;
-import java.util.Calendar;
 
 import org.apache.jmeter.engine.util.CompoundVariable;
 import org.apache.jmeter.functions.AbstractFunction;
@@ -12,25 +12,27 @@ import org.apache.jmeter.samplers.SampleResult;
 import org.apache.jmeter.samplers.Sampler;
 import org.apache.jmeter.threads.JMeterVariables;
 import org.apache.jorphan.logging.LoggingManager;
+import org.apache.log.Logger;
 
-public class TimeInMillis extends AbstractFunction {
+public class RandomRegExValue extends AbstractFunction {
 
     private static final List<String> desc = new LinkedList<String>();
-    private static final String KEY = "__TimeInMillis";
+    private static final String KEY = "__RandomRegExValue";
+    private static final String MATCH_NR = "_matchNr";
     private static final int MAX_PARAM_COUNT = 1;
-    private static final int MIN_PARAM_COUNT = 0;
+    private static final int MIN_RANGE = 1;
     private static final Logger log = LoggingManager.getLoggerForClass();
-    private Object[] values;
+    private CompoundVariable varName;
 
     static {
-        desc.add("(Optional)Pass the milliseconds that should be added/subtracted from current time.");
+        desc.add("Regular expression variable name");
     }
    
 
     /**
      * No-arg constructor.
      */
-    public TimeInMillis() {
+    public RandomRegExValue() {
         super();
     }
 
@@ -39,25 +41,34 @@ public class TimeInMillis extends AbstractFunction {
     public synchronized String execute(SampleResult previousResult, Sampler currentSampler)
             throws InvalidVariableException {
         JMeterVariables vars = getVariables();
-        Calendar cal = Calendar.getInstance();
+        String res = varName.execute().trim();
 
-        if (values.length == 1 ) { //If user has provided offset value then addjust the time.
-            try {
-                Integer offsetTime =  new Integer(((CompoundVariable) values[0]).execute().trim());
-                cal.add(Calendar.MILLISECOND, offsetTime);
-            } catch (Exception e) { //In case user pass invalid parameter.
-                throw new InvalidVariableException(e);
-            }           
+        if (vars != null) {
+             int maxRange = Integer.valueOf(vars.get(res+MATCH_NR));
+
+            if (maxRange == 0) {
+                log.info(res+" is not created in the previous Regular expression extractor");
+                return "0";
+            }
+            else {
+               int randomIndex =  maxRange + (int)(Math.random() * (maxRange - MIN_RANGE + 1));
+                //The previous check will make sure that all regular expression variable are created.
+                //And below expression will extract the variable value.
+               return vars.get(res+String.valueOf(randomIndex)); 
+            }
+
         }
 
-        return String.valueOf(cal.getTimeInMillis());
+        return "0";
+
     }
 
     /** {@inheritDoc} */
     @Override
     public synchronized void setParameters(Collection<CompoundVariable> parameters) throws InvalidVariableException {
-        checkParameterCount(parameters, MIN_PARAM_COUNT, MAX_PARAM_COUNT);
-        values = parameters.toArray();
+        checkMinParameterCount(parameters, MAX_PARAM_COUNT);
+        Object[] values = parameters.toArray();
+        varName = (CompoundVariable)values[0];
     }
 
     /** {@inheritDoc} */
