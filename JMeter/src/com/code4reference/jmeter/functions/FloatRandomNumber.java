@@ -22,7 +22,7 @@ public class FloatRandomNumber extends AbstractFunction {
 	}
 	private Object[] values;
 
-	/**indian stock exchange for last 1 month
+	/**
 	 * No-arg constructor.
 	 */
 	public FloatRandomNumber() {

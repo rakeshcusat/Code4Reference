@@ -54,7 +54,7 @@ public class RandomRegExValue extends AbstractFunction {
                int randomIndex =  maxRange + (int)(Math.random() * (maxRange - MIN_RANGE + 1));
                 //The previous check will make sure that all regular expression variable are created.
                 //And below expression will extract the variable value.
-               return vars.get(res+String.valueOf(randomIndex)); 
+               return vars.get(String.format("%s_%d", res, randomIndex)); 
             }
 
         }
