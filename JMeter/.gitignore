@@ -1,0 +1,9 @@
+#Build directories
+##################
+bin/
+
+
+#Class files or Objects.
+########################
+*.class
+
