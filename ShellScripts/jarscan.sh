@@ -36,14 +36,14 @@ fi
 
 shift
 
-echo "pattern : $pattern"
+#echo "pattern : $pattern"
 
-for jar in $(find $* -type f -name "*.jar")
+for I in $(find $* -type f -name "*.jar")
 do
-  match=`jar -tf $jar | grep $pattern`
+  match=`jar -tf $I | grep $pattern`
   if [ ! -z "$match" ]
   then
-    echo "Found in: $jar"
+    echo "Found in: $I"
     echo "$match"
   fi
 done
