@@ -7,13 +7,15 @@ repositories {
 }
 
 dependencies {
-    compile 'org.apache.jmeter:ApacheJMeter_core:2.9'  //This JMeter plugin source code build depends on JMeter2.9 version.
+    //This JMeter plugin source code build depends on JMeter2.9 version.
+    compile 'org.apache.jmeter:ApacheJMeter_core:2.9'  
     compile 'org.apache.jmeter:ApacheJMeter_components:2.9'
 }
+
 sourceSets {
    main {
       java {
-         srcDir 'src/java'
+         srcDir 'src/java'  //JMeter plugin source directory.
       }
    }
 }

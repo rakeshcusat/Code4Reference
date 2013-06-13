@@ -16,6 +16,7 @@ tempclasses
 # temp file#
 ###########
 *~
+*.swp
 # OS generated files #
 ######################
 .DS_Store?
