@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <metadata>
   <groupId>com.code4reference</groupId>
-  <artifactId>Code4ReferencePlugin</artifactId>
+  <artifactId>code4ReferencePlugin</artifactId>
   <version>0.1-SNAPSHOT</version>
   <versioning>
     <snapshot>
-      <timestamp>20120814.145630</timestamp>
-      <buildNumber>1</buildNumber>
+      <timestamp>20120814.153309</timestamp>
+      <buildNumber>3</buildNumber>
     </snapshot>
-    <lastUpdated>20120814145630</lastUpdated>
+    <lastUpdated>20120814153309</lastUpdated>
   </versioning>
 </metadata>
