@@ -41,8 +41,8 @@ public class TimeInMillis extends AbstractFunction {
         //JMeterVariables vars = getVariables();
         Calendar cal = Calendar.getInstance();
 
-        if (values.length == 1 ) { //If user has provided offset value then addjust the time.
-        	log.info("Got pone paramenter");
+        if (values.length == 1 ) { //If user has provided offset value then adjust the time.
+            log.info("Got one paramenter");
             try {
                 Integer offsetTime =  new Integer(((CompoundVariable) values[0]).execute().trim());
                 cal.add(Calendar.MILLISECOND, offsetTime);
