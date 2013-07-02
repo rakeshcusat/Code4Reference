@@ -43,9 +43,9 @@ CREATE_USERINFO_TABLE = "CREATE TABLE IF NOT EXISTS {db_name}.{table_name} ( " \
 SELECT_MAX_ID = "SELECT MAX(id) FROM {db_name}.{table_name}".format(db_name=DB_NAME, table_name=TABLE_NAME)                        
 
 #Insert record statement                          
-INSERT_RECORD = "INSERT INTO {db_name}.{table_name} " \
-                "( id, name, login, email, location, company, repos, created) " \
-                "VALUES (%s, %s, %s, %s, %s, %s, %s, %s)".format(db_name=DB_NAME, table_name=TABLE_NAME)    
+INSERT_RECORD = u"INSERT INTO {db_name}.{table_name} " \
+                u"( id, name, login, email, location, company, repos, created) " \
+                u"VALUES (%s, %s, %s, %s, %s, %s, %s, %s)".format(db_name=DB_NAME, table_name=TABLE_NAME)    
 def get_cur_time():
     """Utility method to return the current time in string"""
     return datetime.now().strftime("%d-%m-%y-%H:%M:%S")
@@ -118,22 +118,61 @@ def insert_user_info(db_con,
 		print("Couldn't insert into {table}".format(table=TABLE_NAME))
 		print("Error : {error}".format(error))
 
+			
+
+def get_pygithub_user_details(db_con, db_cursor, args):
+    #Create Github object to access git API.
+    gh = Github(login_or_token=args.git_user, password=args.git_password, per_page=100)
 	
-def get_user_detail(pswd):
-	"""This method uses github3 library"""
-	g = github3.login(username="rakeshcusat", password=pswd)
-		
-	fhandler = open("githubuser_"+get_cur_time(), "w")
 	
-	for user in g.iter_all_users():
-		user.refresh()
-		try:
-			fhandler.write(" user: {0}, email: {1}, location: {2}\n".format(str(user), str(user.email), str(user.location)))
-		except:
-			print "Something wrong, user id : {0}".format(user.id);
-	fhandler.close()		
-	
-                
+    for user in gh.get_users(since=select_max_id(db_cursor)):
+        try:
+            insert_user_info(db_con, 
+                            db_cursor,
+                            user.id, 
+                            user.name, 
+                            user.login, 
+                            user.email, 
+                            user.location,
+                            user.company,
+                            user.public_repos,
+                            user.created_at)
+                            
+            print u"'{usr_Id}', '{usr_name}', '{usr_login}', "\
+                   u"'{usr_email}', '{usr_location}', '{usr_company}', "\
+                   u"'{usr_repo}', '{usr_joining}'\n".format(usr_Id=user.id, 
+                                                            usr_name=user.name, 
+                                                            usr_login=user.login,
+                                                            usr_email=user.email, 
+                                                            usr_location=user.location,
+                                                            usr_company=user.company, 
+                                                            usr_repo=user.public_repos,
+                                                            usr_joining=user.created_at)
+        except Exception as error:
+            print ("Got excetpion , but moving forward: {err}".format(err=error))
+            
+        print "{cur_time} Rate limit : {limit}".format(cur_time=get_cur_time(),
+                                                       limit=gh.rate_limiting)
+                                                       
+        #We should sleep for sometime to throttle the API call.
+        #time.sleep(0.5)
+        
+        if gh.rate_limiting == 0:
+            print ("API call has exceeded the limit. We should wait for 15 mins.")
+            time.sleep(900)
+            print ("Resuming it again at {cur_time}".format(cur_time=get_cur_time()))
+            
+def get_github3_user_details(db_con, db_cursor, args):
+    """This method uses github3 library"""
+    gh = github3.login(username=args.git_user, password=git_password)
+			
+    for user in gh.iter_all_users():
+        user.refresh()
+        try:
+            fhandler.write(" user: {0}, email: {1}, location: {2}\n".format(str(user), str(user.email), str(user.location)))
+        except:
+            print "Something wrong, user id : {0}".format(user.id);
+    
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("-u", 
@@ -180,43 +219,7 @@ def main():
     if args.create_schema:
         create_schema(con, db_cursor)
         
-    #Create Github object to access git API.
-    gh = Github(login_or_token=args.git_user, password=args.git_password, per_page=100)
-	
-	
-    for user in gh.get_users(since=select_max_id(db_cursor)):
-        insert_user_info(con, 
-                        db_cursor,
-                        user.id, 
-                        user.name, 
-                        user.login, 
-                        user.email, 
-                        user.location,
-                        user.company,
-                        user.public_repos,
-                        user.created_at)
-                        
-        print u"'{usr_Id}', '{usr_name}', '{usr_login}', "\
-               "'{usr_email}', '{usr_location}', '{usr_company}', "\
-               "'{usr_repo}', '{usr_joining}'\n".format(usr_Id=user.id, 
-		                                                usr_name=user.name, 
-		                                                usr_login=user.login,
-                                                        usr_email=user.email, 
-		                                                usr_location=user.location,
-		                                                usr_company=user.company, 
-		                                                usr_repo=user.public_repos,
-		                                                usr_joining=user.created_at)
-                          																		
-        print "{cur_time} Rate limit : {limit}".format(cur_time=get_cur_time(),
-                                                       limit=gh.rate_limiting)
-                                                       
-        #We should sleep for sometime to throttle the API call.
-        time.sleep(0.5)
-        
-        if gh.rate_limiting == 0:
-            print ("API call has exceeded the limit. We should wait for 15 mins.")
-            time.sleep(900)
-            print ("Resuming it again at {cur_time}".format(cur_time=get_cur_time()))
+    get_pygithub_user_details(con, db_cursor, args)
             
     con.close()
     sys.exit(0)
