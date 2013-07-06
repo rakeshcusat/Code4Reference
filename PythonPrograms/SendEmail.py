@@ -1,18 +1,14 @@
 #!/usr/bin/env python
-import smtplib
-from email.mime.text import MIMEText
+from smtoplib import SMTP
+from smtplib import SMTPException
 
 EMAIL_SUBJECT = "Email from Python script"
 EMAIL_FROM = "notification@code4reference.com"
-EMAIL_RECEIVERS = ['hamepal@gmail.com']
+EMAIL_RECEIVERS = ['receiverId@gmail.com']
 
 def listToStr(lst):
     """This method makes comma separated list item string"""
-
     return ','.join(lst)
-
-def getCurrentTime():
-    return datetime.now().strftime(DB_DATE_FORMAT)
 
 def send_email(msg):
     """This method sends an email""" 
@@ -23,8 +19,9 @@ def send_email(msg):
     msg_body =  msg_header + msg
 
     try:
-      smtpObj = smtplib.SMTP('localhost')
+      smtpObj = SMTP('localhost')
       smtpObj.sendmail(EMAIL_FROM, EMAIL_RECEIVERS, msg_body)
+      smtpObj.quit()
     except SMTPException as error:
       print "Error: unable to send email :  {err}".format(err=error)
 
