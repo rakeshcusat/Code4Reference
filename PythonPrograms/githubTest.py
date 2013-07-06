@@ -1,11 +1,16 @@
 #!/usr/bin/env python
 
-from github import Github
 #import github3  #It is not used currently
+from github import Github
 from datetime import datetime
 import argparse
 import sys
 import time
+import traceback
+
+#For sending email-notification
+from smtplib import SMTP    
+from smtplib import SMTPException  
 
 try:
     import MySQLdb
@@ -22,6 +27,7 @@ TABLE_NAME = "github_user"
 DB_PSWD="root"
 DB_USER="root"
 DB_HOST="localhost"
+MAX_ATTEMPTS = 6
 
 #Create data base statement for scema creation.
 CREATE_DATA_BASE = "CREATE DATABASE IF NOT EXISTS {db_name}".format(db_name=DB_NAME)
@@ -45,7 +51,33 @@ SELECT_MAX_ID = "SELECT MAX(id) FROM {db_name}.{table_name}".format(db_name=DB_N
 #Insert record statement                          
 INSERT_RECORD = u"INSERT INTO {db_name}.{table_name} " \
                 u"( id, name, login, email, location, company, repos, created) " \
-                u"VALUES (%s, %s, %s, %s, %s, %s, %s, %s)".format(db_name=DB_NAME, table_name=TABLE_NAME)    
+                u"VALUES (%s, %s, %s, %s, %s, %s, %s, %s)".format(db_name=DB_NAME, table_name=TABLE_NAME) 
+
+#e-mail related variables                
+EMAIL_SUBJECT = "Github test notification"
+EMAIL_SUBJECT_URGENT = "[URGENT]: " + EMAIL_SUBJECT
+EMAIL_FROM = "notification@code4reference.com"
+EMAIL_RECEIVERS = ['hamepal@gmail.com']
+
+def listToStr(lst):
+    """This method makes comma separated list item string"""
+    return ','.join(lst)
+    
+def send_email(sub, msg):
+    """This method sends an email""" 
+  
+    msg_header = "From: " + EMAIL_FROM + "\n" + \
+                 "To: " + listToStr(EMAIL_RECEIVERS) + "\n" + \
+                 "Subject: " + sub + "\n"
+    msg_body =  msg_header + msg
+
+    try:
+      smtpObj = SMTP('localhost')
+      smtpObj.sendmail(EMAIL_FROM, EMAIL_RECEIVERS, msg_body)
+      smtpObj.quit()
+    except SMTPException as error:
+      print "Error: unable to send email :  {err}".format(err=error)
+                   
 def get_cur_time():
     """Utility method to return the current time in string"""
     return datetime.now().strftime("%d-%m-%y-%H:%M:%S")
@@ -116,52 +148,74 @@ def insert_user_info(db_con,
         
     except Exception as error:
 		print("Couldn't insert into {table}".format(table=TABLE_NAME))
-		print("Error : {error}".format(error))
+		print("Error : {err}".format(err=error))
 
 			
 
 def get_pygithub_user_details(db_con, db_cursor, args):
     #Create Github object to access git API.
     gh = Github(login_or_token=args.git_user, password=args.git_password, per_page=100)
-	
-	
-    for user in gh.get_users(since=select_max_id(db_cursor)):
-        try:
-            insert_user_info(db_con, 
-                            db_cursor,
-                            user.id, 
-                            user.name, 
-                            user.login, 
-                            user.email, 
-                            user.location,
-                            user.company,
-                            user.public_repos,
-                            user.created_at)
-                            
-            print u"'{usr_Id}', '{usr_name}', '{usr_login}', "\
-                   u"'{usr_email}', '{usr_location}', '{usr_company}', "\
-                   u"'{usr_repo}', '{usr_joining}'\n".format(usr_Id=user.id, 
-                                                            usr_name=user.name, 
-                                                            usr_login=user.login,
-                                                            usr_email=user.email, 
-                                                            usr_location=user.location,
-                                                            usr_company=user.company, 
-                                                            usr_repo=user.public_repos,
-                                                            usr_joining=user.created_at)
-        except Exception as error:
-            print ("Got excetpion , but moving forward: {err}".format(err=error))
-            
-        print "{cur_time} Rate limit : {limit}".format(cur_time=get_cur_time(),
-                                                       limit=gh.rate_limiting)
-                                                       
-        #We should sleep for sometime to throttle the API call.
-        #time.sleep(0.5)
+    while_count = 0
+    try:
+        while while_count < MAX_ATTEMPTS:
+            try:
+                for user in gh.get_users(since=select_max_id(db_cursor)):
+                    try:
+                        insert_user_info(db_con, 
+                                        db_cursor,
+                                        user.id, 
+                                        (u'' + user.name) if user.name else None, 
+                                        (u'' + user.login), 
+                                        (u'' + user.email) if user.email else None, 
+                                        (u'' + user.location) if user.location else None,
+                                        (u'' + user.company) if user.company else None,
+                                        user.public_repos,
+                                        user.created_at)
+                                        
+                    except Exception as error:
+                        exc_type, exc_value, exc_traceback = sys.exc_info()
+                        print_and_send_exception("Got excetpion , but moving forward anyways",
+                                                 EMAIL_SUBJECT,
+                                                 exc_type, 
+                                                 exc_value, 
+                                                 exc_traceback)
+                       
+                        
+                    print "{cur_time} Rate limit : {limit}".format(cur_time=get_cur_time(),
+                                                                   limit=gh.rate_limiting)
+                                                                   
+                    #We should sleep for sometime to throttle the API call.
+                    time.sleep(0.5)
+                    
+                    if gh.rate_limiting[0] == 0:
+                        print ("API call has exceeded the limit. We should wait for 15 mins.")
+                        time.sleep(900)
+                        print ("Resuming it again at {cur_time}".format(cur_time=get_cur_time()))
+                        
+            except RateLimitExceededException:
+                send_email(EMAIL_SUBJECT, 
+                         "Rate limit has exhausted, will resume after 15 mins.")
+                time.sleep(900)
+                while_count +=1           
+                               
+                                                            
+    except Exception as error:
+        exc_type, exc_value, exc_traceback = sys.exc_info()
+        print_and_send_exception("Got excetpion , terminating", EMAIL_SUBJECT_URGENT, exc_type, exc_value, exc_traceback)
+        print (error_message)
+        sys.exit(1)
+    
+    #Finally send a termination email.
+    send_email(EMAIL_SUBJECT, "Seems everything is done")
         
-        if gh.rate_limiting == 0:
-            print ("API call has exceeded the limit. We should wait for 15 mins.")
-            time.sleep(900)
-            print ("Resuming it again at {cur_time}".format(cur_time=get_cur_time()))
-            
+def print_and_send_exception(initial_msg, sub, exc_type, exc_value, exc_traceback):
+        error_message = initial_msg + ": {err} ".format(err=repr(traceback.format_exception(exc_type, 
+                                                                               exc_value,
+                                                                               exc_traceback)))
+        print (error_message)
+        send_email(sub,error_message)
+        
+                                                                                       
 def get_github3_user_details(db_con, db_cursor, args):
     """This method uses github3 library"""
     gh = github3.login(username=args.git_user, password=git_password)
@@ -172,7 +226,7 @@ def get_github3_user_details(db_con, db_cursor, args):
             fhandler.write(" user: {0}, email: {1}, location: {2}\n".format(str(user), str(user.email), str(user.location)))
         except:
             print "Something wrong, user id : {0}".format(user.id);
-    
+ 
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("-u", 
